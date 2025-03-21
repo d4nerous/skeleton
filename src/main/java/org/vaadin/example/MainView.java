@@ -5,9 +5,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import org.vaadin.example.components.Navbar;
-import org.vaadin.example.components.NavigationStates;
-import org.vaadin.example.components.RuoloSelectionEvent;
+import org.vaadin.example.components.*;
 import org.vaadin.example.service.EventService;
 
 @Route("")
@@ -16,12 +14,16 @@ public class MainView extends VerticalLayout {
 
     private final Navbar navbar;
     private final NavigationStates leftStates;
-    private final HorizontalLayout mainContent;
+    private final RightColumnView rightColumnView;
+    private final HorizontalLayout mainLayout;
+    private final RoundButtonComponent roundButtonComponent;
 
     public MainView(EventService eventService) {
         this.navbar = new Navbar(eventService);
         this.leftStates = new NavigationStates();
-        this.mainContent = new HorizontalLayout();
+        this.rightColumnView = new RightColumnView();
+        this.mainLayout = new HorizontalLayout();
+        this.roundButtonComponent = new RoundButtonComponent();
 
         setSizeFull();
         setPadding(false);
@@ -29,20 +31,43 @@ public class MainView extends VerticalLayout {
         setAlignItems(Alignment.START);
         setJustifyContentMode(JustifyContentMode.START);
 
-        // Imposto la colonna laterale sinistra (inizialmente nascosta)
+        // Imposta la colonna laterale sinistra (inizialmente nascosta)
         leftStates.setVisible(false);
         leftStates.setWidth("250px");
 
-        // Layout principale con navbar e contenuto
-        mainContent.setWidthFull();
-        mainContent.add(leftStates); // Aggiungo il menu laterale, ma lo lascio nascosto
+        rightColumnView.setVisible(false);
+        rightColumnView.setWidth("250px");
 
-        add(navbar, mainContent);
+        roundButtonComponent.setVisible(false);
+        roundButtonComponent.setWidth("250px");
+
+        // Configura il layout principale
+        mainLayout.setWidthFull();
+        mainLayout.setHeightFull(); // Assicura che occupi tutta l'altezza
+        mainLayout.setSpacing(false);
+        mainLayout.setPadding(false);
+        mainLayout.setAlignItems(Alignment.CENTER); // Allinea il contenuto verticalmente al centro
+        mainLayout.setJustifyContentMode(JustifyContentMode.BETWEEN); // Spazio tra le colonne
+
+        // Aggiungi la colonna sinistra
+        mainLayout.add(leftStates);
+
+        // Aggiungi il bottone grigio
+        mainLayout.add(roundButtonComponent);
+
+        // Aggiungi la colonna destra
+        mainLayout.add(rightColumnView);
+
+        // Aggiungi la navbar sopra
+        add(navbar, mainLayout);
     }
 
     @EventListener
     public void handleUserTypeSelection(RuoloSelectionEvent event) {
-        // Se la ComboBox è su "Operatore", mostra il menu, altrimenti lo nasconde
-        leftStates.setVisible("Operatore".equals(event.getSelectedValue()));
+        // Seleziona se la colonna sinistra deve essere visibile o meno
+        boolean isOperatore = "Operatore".equals(event.getSelectedValue());
+        leftStates.setVisible(isOperatore);
+        rightColumnView.setVisible(isOperatore);
+        roundButtonComponent.setVisible(isOperatore);
     }
 }
