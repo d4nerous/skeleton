@@ -24,7 +24,7 @@ public class RoundButtonComponent extends VerticalLayout {
         // Aggiungi il listener di click al bottone
         roundButton.addClickListener(e -> {
             // Naviga alla vista "second-view"
-            getUI().ifPresent(ui -> ui.navigate("second-view"));
+            getUI().ifPresent(ui -> ui.navigate("dettaglio-view"));
             // Opzionale: mostra una notifica per il click
             Notification.show("Hai cliccato il bottone e sei stato reindirizzato alla seconda vista!");
         });

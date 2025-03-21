@@ -8,18 +8,18 @@ import org.springframework.stereotype.Component;
 import org.vaadin.example.components.*;
 import org.vaadin.example.service.EventService;
 
-@Route("")
+@Route("operatore-view")
 @Component
-public class MainView extends VerticalLayout {
+public class OperatoreView extends VerticalLayout {
 
-    private final Navbar navbar;
+    private Navbar navbar;
     private final NavigationStates leftStates;
     private final RightColumnView rightColumnView;
     private final HorizontalLayout mainLayout;
     private final RoundButtonComponent roundButtonComponent;
 
-    public MainView(EventService eventService) {
-        this.navbar = new Navbar(eventService);
+    public OperatoreView(EventService eventService, Navbar navbar) {
+        this.navbar = navbar;
         this.leftStates = new NavigationStates();
         this.rightColumnView = new RightColumnView();
         this.mainLayout = new HorizontalLayout();
