@@ -4,7 +4,6 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.vaadin.example.components.LeftColumnSecondView;
-import org.vaadin.example.components.Navbar;
 
 @Route(value = "dettaglio-view",layout = MainLayout.class)
 @UIScope

@@ -2,7 +2,6 @@ package org.vaadin.example.components;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -6,7 +6,6 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.spring.annotation.UIScope;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.vaadin.example.Store;
 import org.vaadin.example.model.RuoloDTO;
@@ -37,10 +36,15 @@ public class Navbar extends HorizontalLayout {
         this.utente= store.utente;
         this.listaRuoli=this.utente.getRoles();
         this.ruoloSelected=store.ruoloSelected;
+
         buildUI();
         addListener();
 
     }
+
+
+
+
 
     private void buildUI(){
 

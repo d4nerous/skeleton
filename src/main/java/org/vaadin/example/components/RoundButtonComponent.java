@@ -3,7 +3,6 @@ package org.vaadin.example.components;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.RouterLink;
 
 public class RoundButtonComponent extends VerticalLayout {
 

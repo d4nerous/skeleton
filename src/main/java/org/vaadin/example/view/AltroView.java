@@ -6,9 +6,6 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.stereotype.Component;
-import org.vaadin.example.components.NavigationStates;
-import org.vaadin.example.components.RightColumnView;
-import org.vaadin.example.components.RoundButtonComponent;
 import org.vaadin.example.service.EventService;
 
 @Route(value = "altro-view",layout = MainLayout.class)

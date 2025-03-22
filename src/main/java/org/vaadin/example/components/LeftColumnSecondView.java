@@ -1,11 +1,11 @@
 package org.vaadin.example.components;
 
+import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -37,7 +37,7 @@ public class LeftColumnSecondView extends VerticalLayout {
         HorizontalLayout layout = new HorizontalLayout(iconComponent, textComponent);
         layout.setAlignItems(Alignment.CENTER);
         layout.setSpacing(true);
-
+        layout.getStyle().set("cursor","pointer");
         // Impostare l'azione al click del layout (se vuoi una azione)
         layout.addClickListener(e -> {
             // Gestire le azioni cliccando su ciascuna voce
