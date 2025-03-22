@@ -29,8 +29,8 @@ public class NavigationStates extends VerticalLayout {
 
         // Pulsante tondo
         Button button = new Button(labelText);
-        button.setWidth("46px");  // Aumento delle dimensioni
-        button.setHeight("46px"); // Aumento delle dimensioni
+        button.setWidth("72px");  // Aumento delle dimensioni
+        button.setHeight("72px"); // Aumento delle dimensioni
         button.getStyle()
                 .set("background-color", color) // Colore sfondo
                 .set("border", "none") // Nessun bordo
@@ -53,8 +53,8 @@ public class NavigationStates extends VerticalLayout {
     private Button createSquareButtonWithLabel(String labelText, String color) {
         // Pulsante quadrato
         Button button = new Button(labelText);
-        button.setWidth("46px");  // Aumento delle dimensioni
-        button.setHeight("46px"); // Aumento delle dimensioni
+        button.setWidth("72px");  // Aumento delle dimensioni
+        button.setHeight("72px"); // Aumento delle dimensioni
         button.getStyle()
                 .set("background-color", color) // Colore sfondo
                 .set("border", "none") // Nessun bordo
