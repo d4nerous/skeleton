@@ -10,10 +10,8 @@ public class RightColumnView extends VerticalLayout {
 
     public RightColumnView() {
         // Impostazioni layout principale
-        setHeightFull();
-        setWidth("250px");  // Imposta una larghezza fissa per la colonna a destra
-        setPadding(true);
-        setSpacing(true);
+        setWidth("20vw");
+        setHeight("70vh");
         setAlignItems(Alignment.CENTER);  // Centra i pulsanti
 
         // Aggiungi i 5 pulsanti con testo
@@ -22,7 +20,11 @@ public class RightColumnView extends VerticalLayout {
         add(createButton("Pulsante 3", "evento3"));
         add(createButton("Pulsante 4", "evento4"));
         add(createButton("Pulsante 5", "evento5"));
+
+        getStyle().set("border","1px solid green");
+
     }
+
 
     // Metodo per creare un pulsante rettangolare con etichetta
     private Button createButton(String buttonText, String eventType) {

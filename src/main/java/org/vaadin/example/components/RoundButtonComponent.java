@@ -9,6 +9,8 @@ public class RoundButtonComponent extends VerticalLayout {
 
     public RoundButtonComponent() {
         // Crea un bottone grande, tondo e grigio
+        setWidthFull();
+        setHeight("70vh");
         Button roundButton = new Button();
         roundButton.setText("Clicca qui");
         roundButton.getStyle()
@@ -30,5 +32,8 @@ public class RoundButtonComponent extends VerticalLayout {
         });
 
         add(roundButton);
+        setAlignItems(Alignment.CENTER);
+        setJustifyContentMode(JustifyContentMode.CENTER);
+        getStyle().set("border","1px solid red");
     }
 }

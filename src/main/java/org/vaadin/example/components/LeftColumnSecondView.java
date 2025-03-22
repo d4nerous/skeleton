@@ -12,11 +12,12 @@ import org.springframework.stereotype.Component;
 public class LeftColumnSecondView extends VerticalLayout {
 
     public LeftColumnSecondView() {
-        setSpacing(true);
-        setPadding(true);
-        setWidth("250px"); // Impostare la larghezza della colonna
-        setHeightFull();   // Per riempire verticalmente lo spazio
-
+        setHeightFull();
+        setWidth("20vw");
+        setHeight("70vh");
+        setAlignItems(Alignment.CENTER);
+        setJustifyContentMode(JustifyContentMode.END);
+        getStyle().set("border","1px solid orange");
         // Creare le voci della colonna con icone
         HorizontalLayout homeLayout = createButtonWithIcon(VaadinIcon.HOME, "Torna alla Home");
         HorizontalLayout modifyLayout = createButtonWithIcon(VaadinIcon.EDIT, "Modifica");
@@ -25,8 +26,6 @@ public class LeftColumnSecondView extends VerticalLayout {
         // Aggiungere le voci alla colonna
         add(homeLayout, modifyLayout, cancelLayout);
 
-        // Allineare al centro le voci
-        setAlignItems(Alignment.START);
     }
 
     private HorizontalLayout createButtonWithIcon(VaadinIcon icon, String text) {
@@ -42,20 +41,22 @@ public class LeftColumnSecondView extends VerticalLayout {
         // Impostare l'azione al click del layout (se vuoi una azione)
         layout.addClickListener(e -> {
             // Gestire le azioni cliccando su ciascuna voce
-            if (text.equals("Torna alla Home")) {
+            switch (text) {
+                case "Torna alla Home":
 
-                // Naviga alla vista "second-view"
-                getUI().ifPresent(ui -> ui.navigate("operatore-view"));
-                // Opzionale: mostra una notifica per il click
-                Notification.show("Hai cliccato il bottone e sei stato reindirizzato alla home!");
-
-                System.out.println("Torna alla Home");
-            } else if (text.equals("Modifica")) {
-                // Azione per modificare
-                System.out.println("Modifica");
-            } else if (text.equals("Annulla")) {
-                // Azione per annullare
-                System.out.println("Annulla");
+                    // Naviga alla vista "second-view"
+                    getUI().ifPresent(ui -> ui.navigate("operatore-view"));
+                    // Opzionale: mostra una notifica per il click
+                    Notification.show("Hai cliccato il bottone e sei stato reindirizzato alla home!");
+                    break;
+                case "Modifica":
+                    // Azione per modificare
+                    System.out.println("Modifica");
+                    break;
+                case "Annulla":
+                    // Azione per annullare
+                    System.out.println("Annulla");
+                    break;
             }
         });
 

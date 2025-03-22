@@ -1,0 +1,17 @@
+{
+  "id": 1,
+  "username": "utente-1",
+  "name": "Mario",
+  "surname": "Rossi",
+  "email": "jmariorossi@example.com",
+  "roles": [
+    {
+      "id": 101,
+      "name": "operatore"
+    },
+    {
+      "id": 102,
+      "name": "altro"
+    }
+  ]
+}

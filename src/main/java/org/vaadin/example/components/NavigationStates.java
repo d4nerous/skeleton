@@ -1,7 +1,6 @@
 package org.vaadin.example.components;
 
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
 
@@ -11,37 +10,32 @@ public class NavigationStates extends VerticalLayout {
     public NavigationStates() {
         // Impostazioni layout principale
         setHeightFull();
-        setWidth("250px");
-        setMaxHeight("600px");
-        setPadding(true);
+        setWidth("20vw");
+        setHeight("70vh");
         setAlignItems(Alignment.CENTER); // Centra gli elementi
 
         // Aggiungi i pulsanti con il testo sopra
-        add(createRoundButtonWithLabel("Pulsante 1", "#FF5733"));  // Rosso - Tondo
-        add(createRoundButtonWithLabel("Pulsante 2", "#33FF57"));  // Verde - Tondo
-        add(createRoundButtonWithLabel("Pulsante 3", "#3357FF"));  // Blu - Tondo
-        add(createSquareButtonWithLabel("Pulsante 4", "#F4D03F")); // Giallo - Quadrato
-        add(createRoundButtonWithLabel("Pulsante 5", "#A569BD"));  // Viola - Tondo
+        add(createRoundButtonWithLabel("1", "#FF5733"));  // Rosso - Tondo
+        add(createRoundButtonWithLabel("2","#33FF57"));  // Verde - Tondo
+        add(createRoundButtonWithLabel("3", "#3357FF"));  // Blu - Tondo
+        add(createSquareButtonWithLabel("4", "#F4D03F")); // Giallo - Quadrato
+        add(createRoundButtonWithLabel("5", "#A569BD"));  // Viola - Tondo
+
+        getStyle().set("border","1px solid purple");
     }
 
     // Metodo per creare un pulsante tondo con etichetta sopra
-    private VerticalLayout createRoundButtonWithLabel(String labelText, String color) {
-        // Etichetta
-        Label label = new Label(labelText);
-        label.getStyle()
-                .set("font-size", "14px") // Imposta la dimensione del testo
-                .set("margin-bottom", "5px") // Spazio tra testo e pulsante
-                .set("color", "black"); // Colore del testo
+    private Button createRoundButtonWithLabel(String labelText, String color) {
 
         // Pulsante tondo
-        Button button = new Button();
-        button.setWidth("70px");  // Aumento delle dimensioni
-        button.setHeight("70px"); // Aumento delle dimensioni
+        Button button = new Button(labelText);
+        button.setWidth("46px");  // Aumento delle dimensioni
+        button.setHeight("46px"); // Aumento delle dimensioni
         button.getStyle()
                 .set("background-color", color) // Colore sfondo
                 .set("border", "none") // Nessun bordo
                 .set("cursor", "pointer") // Cursore di tipo pointer per interazione
-                .set("display", "flex") // Assicuriamo che il contenuto si adatti bene
+               // .set("display", "flex") // Assicuriamo che il contenuto si adatti bene
                 .set("align-items", "center") // Allinea gli elementi all'interno
                 .set("justify-content", "center"); // Centra il testo all'interno
         button.getStyle().set("border-radius", "50%"); // Rende il pulsante tondo
@@ -51,33 +45,21 @@ public class NavigationStates extends VerticalLayout {
             handleButtonClick(labelText); // Gestisce l'evento per ogni pulsante
         });
 
-        // Layout verticale per etichetta + pulsante
-        VerticalLayout layout = new VerticalLayout(label, button);
-        layout.setAlignItems(Alignment.CENTER); // Centra il testo sopra il pulsante
-        layout.setSpacing(false); // Rimuove spazio extra tra gli elementi
-        layout.setMargin(false); // Rimuove margini extra
 
-        return layout;
+        return button;
     }
 
     // Metodo per creare un pulsante quadrato con etichetta sopra
-    private VerticalLayout createSquareButtonWithLabel(String labelText, String color) {
-        // Etichetta
-        Label label = new Label(labelText);
-        label.getStyle()
-                .set("font-size", "14px") // Imposta la dimensione del testo
-                .set("margin-bottom", "5px") // Spazio tra testo e pulsante
-                .set("color", "black"); // Colore del testo
-
+    private Button createSquareButtonWithLabel(String labelText, String color) {
         // Pulsante quadrato
-        Button button = new Button();
-        button.setWidth("70px");  // Aumento delle dimensioni
-        button.setHeight("70px"); // Aumento delle dimensioni
+        Button button = new Button(labelText);
+        button.setWidth("46px");  // Aumento delle dimensioni
+        button.setHeight("46px"); // Aumento delle dimensioni
         button.getStyle()
                 .set("background-color", color) // Colore sfondo
                 .set("border", "none") // Nessun bordo
                 .set("cursor", "pointer") // Cursore di tipo pointer per interazione
-                .set("display", "flex") // Assicuriamo che il contenuto si adatti bene
+               // .set("display", "flex") // Assicuriamo che il contenuto si adatti bene
                 .set("align-items", "center") // Allinea gli elementi all'interno
                 .set("justify-content", "center"); // Centra il testo all'interno
 
@@ -87,12 +69,8 @@ public class NavigationStates extends VerticalLayout {
         });
 
         // Layout verticale per etichetta + pulsante
-        VerticalLayout layout = new VerticalLayout(label, button);
-        layout.setAlignItems(Alignment.CENTER); // Centra il testo sopra il pulsante
-        layout.setSpacing(false); // Rimuove spazio extra tra gli elementi
-        layout.setMargin(false); // Rimuove margini extra
 
-        return layout;
+        return button;
     }
 
     // Gestione evento del click per ciascun pulsante
@@ -123,4 +101,15 @@ public class NavigationStates extends VerticalLayout {
                 System.out.println("Pulsante sconosciuto cliccato");
         }
     }
+
+
+
+//    private String getScreenHeigth() {
+//        // Recupera l'altezza disponibile e imposta il layout
+//        AtomicReference<String> screenHeight= new AtomicReference<>("0px");
+//        UI.getCurrent().getPage().retrieveExtendedClientDetails(details -> {
+//            screenHeight.set(details.getScreenHeight()+"px");
+//        });
+//        return screenHeight.get();
+//    }
 }
