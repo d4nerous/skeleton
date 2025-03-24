@@ -13,6 +13,7 @@ public class UtenteDTO {
     private String surname     =null;
     private String email=null;
     private ArrayList<RuoloDTO> roles   =new ArrayList<RuoloDTO>();
+    private ArrayList<AnnoFormtivoDTO> anni = new ArrayList<>();
 
     public void setId(Integer id) {
         this.id = id;
@@ -37,6 +38,9 @@ public class UtenteDTO {
     public void setRoles(ArrayList<RuoloDTO> roles) {
         this.roles = roles;
     }
+    public void setAnni(ArrayList<AnnoFormtivoDTO> anni) {
+        this.anni = anni;
+    }
 
     public Integer getId() {
         return id;
@@ -60,6 +64,9 @@ public class UtenteDTO {
 
     public ArrayList<RuoloDTO> getRoles() {
         return roles;
+    }
+    public ArrayList<AnnoFormtivoDTO> getAnni() {
+        return anni;
     }
 
     @Override

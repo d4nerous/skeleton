@@ -13,5 +13,15 @@
       "id": 102,
       "name": "altro"
     }
-  ]
+  ],
+"anni":[
+  {
+    "anno": 2024,
+    "descrizione": "Anno formativo 2024-2025"
+  },
+  {
+    "anno": 2023,
+    "descrizione": "Anno formativo 2023-2024"
+  }
+]
 }

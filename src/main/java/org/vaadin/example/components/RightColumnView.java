@@ -10,7 +10,7 @@ public class RightColumnView extends VerticalLayout {
     public RightColumnView() {
         // Impostazioni layout principale
         setWidth("20vw");
-        setHeight("70vh");
+        setHeight("50vh");
         setAlignItems(Alignment.CENTER);  // Centra i pulsanti
 
         // Aggiungi i 5 pulsanti con testo

@@ -8,6 +8,7 @@ import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.stereotype.Component;
 import org.vaadin.example.Store;
+import org.vaadin.example.model.AnnoFormtivoDTO;
 import org.vaadin.example.model.RuoloDTO;
 import org.vaadin.example.model.UtenteDTO;
 import org.vaadin.example.service.EventService;
@@ -19,15 +20,15 @@ import java.util.Arrays;
 @UIScope
 public class Navbar extends HorizontalLayout {
 
-    private ComboBox<String> annoFormativoComboBox = new ComboBox<>("Anno", Arrays.asList("2023", "2024"));
+    private ComboBox<AnnoFormtivoDTO> annoFormativoComboBox = new ComboBox<>("Anno");
     private ComboBox<RuoloDTO> ruoloComboBox= new ComboBox<>("Ruolo");
     private Span nome;
     private EventService eventService;
 
     private UtenteDTO utente=null;
     private ArrayList<RuoloDTO> listaRuoli=null;
+    private ArrayList<AnnoFormtivoDTO> listaAnni=null;
     private RuoloDTO ruoloSelected=null;
-    private String annoSelected=null;
 
 
     public Navbar(EventService eventService) {
@@ -35,6 +36,7 @@ public class Navbar extends HorizontalLayout {
         this.eventService=eventService;
         this.utente= store.utente;
         this.listaRuoli=this.utente.getRoles();
+        this.listaAnni = this.utente.getAnni();
         this.ruoloSelected=store.ruoloSelected;
 
         buildUI();
@@ -52,6 +54,9 @@ public class Navbar extends HorizontalLayout {
         ruoloComboBox.setItemLabelGenerator(RuoloDTO::getName);
         if(this.ruoloSelected!=null)
             ruoloComboBox.setValue(ruoloSelected);
+
+        annoFormativoComboBox.setItems(listaAnni);
+        annoFormativoComboBox.setItemLabelGenerator(AnnoFormtivoDTO::getDescrizione);
 
 
         setWidthFull();
