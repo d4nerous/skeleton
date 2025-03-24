@@ -32,9 +32,7 @@ public class MainView extends VerticalLayout {
         this.eventService=eventService;
         this.store=store;
         this.listaRuoli=store.utente.getRoles();
-        if(store.ruoloSelected==null){
-            openRoleSelectionDialog();
-        }
+
 
 //todo trovare il modo per selezionare all'inizio la dialog e poi caricare la navbar con i dati preselezionati
 
@@ -42,54 +40,5 @@ public class MainView extends VerticalLayout {
         setSizeFull();
 
     }
-    private void openRoleSelectionDialog() {
 
-
-        Dialog roleDialog = new Dialog();
-        roleDialog.setCloseOnEsc(false);
-        roleDialog.setCloseOnOutsideClick(false);
-
-        // ComboBox con i ruoli disponibili
-        ComboBox<RuoloDTO> ruoloComboBox = new ComboBox<>("Seleziona il tuo ruolo");
-        ruoloComboBox.setItems(listaRuoli);
-        ruoloComboBox.setItemLabelGenerator(RuoloDTO::getName);
-
-        // Bottone per confermare la selezione
-        Button confirmButton = new Button("Conferma", event -> {
-            if (ruoloComboBox.getValue() != null) {
-                ruoloComboBox.addValueChangeListener(r -> {
-                    if (r.getValue() != null) {
-                        this.eventService.publishRuoloChange(r.getValue());
-                        this.store.ruoloSelected=r.getValue();
-
-                    }
-                });
-                roleDialog.close();
-
-            }
-        });
-
-        // Aggiungere elementi al Dialog e mostrarlo
-        roleDialog.add(new VerticalLayout(ruoloComboBox, confirmButton));
-        roleDialog.open();
-    }
-
-    @EventListener
-    public void handleRuoloSelection(RuoloSelectionEvent event) {
-        // Seleziona se la colonna sinistra deve essere visibile o meno
-        if("Operatore".equalsIgnoreCase(event.getSelectedValue().getName())){
-            UI.getCurrent().navigate("operatore-view");
-        }else if("Altro".equalsIgnoreCase(event.getSelectedValue().getName())){
-            UI.getCurrent().navigate("altro-view");
-        }else{
-            UI.getCurrent().navigate("");
-        }
-
-
-
-    }
-    @EventListener
-    public void handleAnnoSelection(AnnoSelectionEvent event) {
-        String anno = event.getSelectedValue();
-    }
 }

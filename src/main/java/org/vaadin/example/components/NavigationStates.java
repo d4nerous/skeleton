@@ -32,12 +32,13 @@ public class NavigationStates extends VerticalLayout {
         button.setWidth("72px");  // Aumento delle dimensioni
         button.setHeight("72px"); // Aumento delle dimensioni
         button.getStyle()
-                .set("background-color", color) // Colore sfondo
-                .set("border", "none") // Nessun bordo
+                .set("background","linear-gradient(to left, "+color+", "+color+"6e)" ) // Colore sfondo
+                .set("border", "1px solid #000000b8") // Nessun bordo
                 .set("cursor", "pointer") // Cursore di tipo pointer per interazione
                // .set("display", "flex") // Assicuriamo che il contenuto si adatti bene
                 .set("align-items", "center") // Allinea gli elementi all'interno
-                .set("justify-content", "center"); // Centra il testo all'interno
+                .set("justify-content", "center") // Centra il testo all'interno
+                .set("box-shadow", "5px 5px 5px #e5e5e5");
         button.getStyle().set("border-radius", "50%"); // Rende il pulsante tondo
 
         // Aggiungi listener di click per ogni pulsante

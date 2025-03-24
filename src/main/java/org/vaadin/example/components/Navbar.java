@@ -94,5 +94,7 @@ public class Navbar extends HorizontalLayout {
         });
     }
 
-
+    public void setRuoloComboBox(RuoloDTO ruolo) {
+        this.ruoloComboBox.setValue(ruolo);
+    }
 }
