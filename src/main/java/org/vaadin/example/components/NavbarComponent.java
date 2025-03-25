@@ -14,11 +14,10 @@ import org.vaadin.example.model.UtenteDTO;
 import org.vaadin.example.service.EventService;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 @Component
 @UIScope
-public class Navbar extends HorizontalLayout {
+public class NavbarComponent extends BaseCardHorizontal {
 
     private ComboBox<AnnoFormtivoDTO> annoFormativoComboBox = new ComboBox<>("Anno");
     private ComboBox<RuoloDTO> ruoloComboBox= new ComboBox<>("Ruolo");
@@ -31,7 +30,7 @@ public class Navbar extends HorizontalLayout {
     private RuoloDTO ruoloSelected=null;
 
 
-    public Navbar(EventService eventService) {
+    public NavbarComponent(EventService eventService) {
         Store store = VaadinSession.getCurrent().getAttribute(Store.class);
         this.eventService=eventService;
         this.utente= store.utente;
@@ -63,7 +62,6 @@ public class Navbar extends HorizontalLayout {
         setPadding(true);
         setSpacing(true);
         setDefaultVerticalComponentAlignment(Alignment.CENTER);
-        getStyle().set("border", "1px solid blue");
 
         // Titolo
         Span title = new Span("Titolo Applicazione");

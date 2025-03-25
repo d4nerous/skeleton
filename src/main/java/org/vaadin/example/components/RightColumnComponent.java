@@ -1,16 +1,15 @@
 package org.vaadin.example.components;
 
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RightColumnView extends VerticalLayout {
+public class RightColumnComponent extends BaseCardVertical {
 
-    public RightColumnView() {
+    public RightColumnComponent() {
         // Impostazioni layout principale
-        setWidth("20vw");
-        setHeight("50vh");
+        setHeightFull();
+        setWidth("15vw");
         setAlignItems(Alignment.CENTER);  // Centra i pulsanti
 
         // Aggiungi i 5 pulsanti con testo
@@ -20,7 +19,6 @@ public class RightColumnView extends VerticalLayout {
         add(createButton("Pulsante 4", "evento4"));
         add(createButton("Pulsante 5", "evento5"));
 
-        getStyle().set("border","1px solid green");
 
     }
 

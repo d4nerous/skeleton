@@ -2,14 +2,16 @@ package org.vaadin.example.components;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-public class RoundButtonComponent extends VerticalLayout {
+public class RoundButtonComponent extends BaseCardHorizontal {
+
 
     public RoundButtonComponent() {
         // Crea un bottone grande, tondo e grigio
-        setWidth("60vw");
-        setHeight("50vh");
+        setHeightFull();
+        setWidth("70vw");
         Button roundButton = new Button();
         roundButton.setText("Clicca qui");
         roundButton.getStyle()
@@ -33,6 +35,5 @@ public class RoundButtonComponent extends VerticalLayout {
         add(roundButton);
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
-        getStyle().set("border","1px solid red");
     }
 }

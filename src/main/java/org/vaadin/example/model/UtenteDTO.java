@@ -14,6 +14,15 @@ public class UtenteDTO {
     private String email=null;
     private ArrayList<RuoloDTO> roles   =new ArrayList<RuoloDTO>();
     private ArrayList<AnnoFormtivoDTO> anni = new ArrayList<>();
+    private ArrayList<AbilitazioniComplessiDTO> complessi = new ArrayList<>();
+
+    public ArrayList<AbilitazioniComplessiDTO> getComplessi() {
+        return complessi;
+    }
+
+    public void setComplessi(ArrayList<AbilitazioniComplessiDTO> complessi) {
+        this.complessi = complessi;
+    }
 
     public void setId(Integer id) {
         this.id = id;

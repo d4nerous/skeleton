@@ -23,5 +23,35 @@
     "anno": 2023,
     "descrizione": "Anno formativo 2023-2024"
   }
-]
+],
+  "complessi": [
+    {
+      "id": 1,
+      "nome": "CYT",
+      "codice": 232,
+      "importoStanziato":100000,
+      "costiSostenuti": 1000
+    },
+    {
+      "id": 2,
+      "nome": "SLL",
+      "codice": 232,
+      "importoStanziato":100000,
+      "costiSostenuti": 3000
+    },
+    {
+      "id": 3,
+      "nome": "LIN",
+      "codice": 232,
+      "importoStanziato":100000,
+      "costiSostenuti": 4000
+    },
+    {
+      "id": 4,
+      "nome": "SFP",
+      "codice": 232,
+      "importoStanziato":100000,
+      "costiSostenuti": 5000
+    }
+  ]
 }

@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.vaadin.example.Store;
-import org.vaadin.example.components.Navbar;
+import org.vaadin.example.components.NavbarComponent;
 import org.vaadin.example.events.RuoloSelectionEvent;
 import org.vaadin.example.model.RuoloDTO;
 import org.vaadin.example.service.EventService;
@@ -26,16 +26,16 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
     List<RuoloDTO> listaRuoli;
     Store store;
     @Autowired
-    public MainLayout(EventService eventService, Navbar navbar) {
+    public MainLayout(EventService eventService, NavbarComponent navbarComponent) {
         Store store = VaadinSession.getCurrent().getAttribute(Store.class);
         this.eventService=eventService;
         this.store=store;
         this.listaRuoli=store.utente.getRoles();
         if(store.ruoloSelected==null){
-            openRoleSelectionDialog(navbar);
+            openRoleSelectionDialog(navbarComponent);
         }
     }
-    private void openRoleSelectionDialog(Navbar navbar) {
+    private void openRoleSelectionDialog(NavbarComponent navbarComponent) {
 
 
         Dialog roleDialog = new Dialog();
@@ -58,8 +58,8 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
                     }
                 });
                 roleDialog.close();
-                add(navbar);
-                navbar.setRuoloComboBox(ruoloComboBox.getValue());
+                add(navbarComponent);
+                navbarComponent.setRuoloComboBox(ruoloComboBox.getValue());
 
 
 

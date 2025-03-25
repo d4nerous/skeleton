@@ -9,9 +9,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LeftColumnSecondView extends VerticalLayout {
+public class LeftColumnSecondViewComponent extends VerticalLayout {
 
-    public LeftColumnSecondView() {
+    public LeftColumnSecondViewComponent() {
         setHeightFull();
         setWidth("20vw");
         setHeight("70vh");

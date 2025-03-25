@@ -1,17 +1,16 @@
 package org.vaadin.example.components;
 
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
 
 @Component
-public class NavigationStates extends VerticalLayout {
+public class LeftColumnBottonComponent extends BaseCardVertical {
 
-    public NavigationStates() {
+    public LeftColumnBottonComponent() {
         // Impostazioni layout principale
         setHeightFull();
-        setWidth("20vw");
-        setHeight("70vh");
+        setWidth("15vw");
+        //setHeight("70vh");
         setAlignItems(Alignment.CENTER); // Centra gli elementi
 
         // Aggiungi i pulsanti con il testo sopra
@@ -21,7 +20,6 @@ public class NavigationStates extends VerticalLayout {
         add(createSquareButtonWithLabel("4", "#F4D03F")); // Giallo - Quadrato
         add(createRoundButtonWithLabel("5", "#A569BD"));  // Viola - Tondo
 
-        getStyle().set("border","1px solid purple");
     }
 
     // Metodo per creare un pulsante tondo con etichetta sopra
