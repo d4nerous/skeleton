@@ -18,10 +18,8 @@ public class OperatoreView extends HorizontalLayout {
     private final HorizontalLayout mainLayout;
     private final RoundButtonComponent roundButtonComponent;
     private final ComplessiComponent complessiComponent;
-    private final DatePickerGridComponent datePickerGridComponent;
 
     public OperatoreView(EventService eventService) {
-        this.datePickerGridComponent = new DatePickerGridComponent();
         this.leftStates = new LeftColumnBottonComponent();
         this.rightColumnComponent = new RightColumnComponent();
         this.mainLayout = new HorizontalLayout();
@@ -37,10 +35,10 @@ public class OperatoreView extends HorizontalLayout {
 
         VerticalLayout layoutDestro = new VerticalLayout();
         HorizontalLayout orizzontale = new HorizontalLayout();
-        orizzontale.add(roundButtonComponent, rightColumnComponent);
-orizzontale.setWidthFull();
-orizzontale.setHeightFull();
-        layoutDestro.add(complessiComponent, orizzontale,datePickerGridComponent);
+        orizzontale.add(roundButtonComponent,rightColumnComponent);
+        orizzontale.setWidthFull();
+        orizzontale.setHeightFull();
+        layoutDestro.add(complessiComponent, orizzontale);
         layoutDestro.setHeightFull();
         layoutDestro.setWidth("80vw");
         mainLayout.setAlignItems(Alignment.START); // Allinea il contenuto verticalmente al centro

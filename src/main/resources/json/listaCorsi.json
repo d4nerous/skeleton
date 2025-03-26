@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "idComplesso": 1,
+    "codiceSCU": "2025-CYT-XX-001-1",
+    "aula": "A101",
+    "dataInizio": "2025-01-12T08:00:00",
+    "dataFine": "2025-01-12T09:30:00",
+    "docente": "Mario Rossi"
+  },
+  {
+    "id": 2,
+    "idComplesso": 1,
+    "codiceSCU": "2025-CYT-XX-001-2",
+    "aula": "B202",
+    "dataInizio": "2025-01-12T09:00:00",
+    "dataFine": "2025-01-12T10:30:00",
+    "docente": "Luca Bianchi"
+  },
+  {
+    "id": 3,
+    "idComplesso": 2,
+    "codiceSCU": "2025-SLL-XX-002-1",
+    "aula": "C303",
+    "dataInizio": "2025-01-12T10:00:00",
+    "dataFine": "2025-01-12T10:30:00",
+    "docente": "Giovanna Verdi"
+  },
+  {
+    "id": 4,
+    "idComplesso": 2,
+    "codiceSCU": "2025-SLL-XX-001-1",
+    "aula": "D404",
+    "dataInizio": "2025-01-12T11:00:00",
+    "dataFine": "2025-01-12T12:30:00",
+    "docente": "Antonio Neri"
+  },
+  {
+    "id": 5,
+    "idComplesso": 3,
+    "codiceSCU": "2025-LIN-XX-001-3",
+    "aula": "E505",
+    "dataInizio": "2025-01-12T12:00:00",
+    "dataFine": "2025-01-12T13:30:00",
+    "docente": "Elena Gialli"
+  },
+  {
+    "id": 6,
+    "idComplesso": 3,
+    "codiceSCU": "2025-LIN-XX-001-2",
+    "aula": "F606",
+    "dataInizio": "2025-01-12T13:00:00",
+    "dataFine": "2025-01-12T14:30:00",
+    "docente": "Marco Azzurri"
+  },
+  {
+    "id": 7,
+    "idComplesso": 4,
+    "codiceSCU": "2025-SFP-XX-002-1",
+    "aula": "G707",
+    "dataInizio": "2025-01-12T14:00:00",
+    "dataFine": "2025-01-12T15:30:00",
+    "docente": "Sara Marrone"
+  },
+  {
+    "id": 8,
+    "idComplesso": 4,
+    "codiceSCU": "2025-SFP-XX-001-1",
+    "aula": "H808",
+    "dataInizio": "2025-01-12T15:00:00",
+    "dataFine": "2025-01-12T16:30:00",
+    "docente": "Francesco Viola"
+  },
+  {
+    "id": 9,
+    "idComplesso": 2,
+    "codiceSCU": "2025-SLL-XX-001-2",
+    "aula": "I909",
+    "dataInizio": "2025-01-12T16:00:00",
+    "dataFine": "2025-01-12T17:30:00",
+    "docente": "Chiara Rosso"
+  },
+  {
+    "id": 10,
+    "idComplesso": 1,
+    "codiceSCU": "2025-CYT-XX-001-1",
+    "aula": "J1010",
+    "dataInizio": "2025-01-12T17:00:00",
+    "dataFine": "2025-01-12T18:30:00",
+    "docente": "Davide Verde"
+  }
+]

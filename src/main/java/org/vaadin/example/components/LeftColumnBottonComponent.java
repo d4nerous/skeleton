@@ -1,6 +1,9 @@
 package org.vaadin.example.components;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,62 +17,55 @@ public class LeftColumnBottonComponent extends BaseCardVertical {
         setAlignItems(Alignment.CENTER); // Centra gli elementi
 
         // Aggiungi i pulsanti con il testo sopra
-        add(createRoundButtonWithLabel("1", "#FF5733"));  // Rosso - Tondo
-        add(createRoundButtonWithLabel("2","#33FF57"));  // Verde - Tondo
-        add(createRoundButtonWithLabel("3", "#3357FF"));  // Blu - Tondo
-        add(createSquareButtonWithLabel("4", "#F4D03F")); // Giallo - Quadrato
-        add(createRoundButtonWithLabel("5", "#A569BD"));  // Viola - Tondo
+        add(createRoundButtonWithLabel("Corsi Attivati", "sfera-verde"));
+        add(createRoundButtonWithLabel("Corsi Chiusi","sfera-rossa"));
+        add(createRoundButtonWithLabel("Corsi Annullati", "sfera-blue"));
+        add(createSquareButtonWithLabel("Extra PAF", "rettangolo-yellow"));
+        add(createRoundButtonWithLabel("Annulla Corso", "sfera-azure"));
 
     }
 
     // Metodo per creare un pulsante tondo con etichetta sopra
-    private Button createRoundButtonWithLabel(String labelText, String color) {
+    private VerticalLayout createRoundButtonWithLabel(String labelText, String style) {
 
+        VerticalLayout vl=new VerticalLayout();
+        vl.setAlignItems(Alignment.CENTER);
+        vl.setJustifyContentMode(JustifyContentMode.CENTER);
+        vl.setPadding(false);
+        vl.setMargin(false);
         // Pulsante tondo
-        Button button = new Button(labelText);
-        button.setWidth("72px");  // Aumento delle dimensioni
-        button.setHeight("72px"); // Aumento delle dimensioni
-        button.getStyle()
-                .set("background","linear-gradient(to left, "+color+", "+color+"6e)" ) // Colore sfondo
-                .set("border", "1px solid #000000b8") // Nessun bordo
-                .set("cursor", "pointer") // Cursore di tipo pointer per interazione
-               // .set("display", "flex") // Assicuriamo che il contenuto si adatti bene
-                .set("align-items", "center") // Allinea gli elementi all'interno
-                .set("justify-content", "center") // Centra il testo all'interno
-                .set("box-shadow", "5px 5px 5px #e5e5e5");
-        button.getStyle().set("border-radius", "50%"); // Rende il pulsante tondo
-
+        Span button = new Span();
+        button.addClassName(style);
         // Aggiungi listener di click per ogni pulsante
         button.addClickListener(event -> {
             handleButtonClick(labelText); // Gestisce l'evento per ogni pulsante
         });
 
-
-        return button;
+        vl.add(button);
+        vl.add(new Label(labelText));
+        return vl;
     }
 
     // Metodo per creare un pulsante quadrato con etichetta sopra
-    private Button createSquareButtonWithLabel(String labelText, String color) {
+    private VerticalLayout createSquareButtonWithLabel(String labelText, String style) {
         // Pulsante quadrato
-        Button button = new Button(labelText);
-        button.setWidth("72px");  // Aumento delle dimensioni
-        button.setHeight("72px"); // Aumento delle dimensioni
-        button.getStyle()
-                .set("background-color", color) // Colore sfondo
-                .set("border", "none") // Nessun bordo
-                .set("cursor", "pointer") // Cursore di tipo pointer per interazione
-               // .set("display", "flex") // Assicuriamo che il contenuto si adatti bene
-                .set("align-items", "center") // Allinea gli elementi all'interno
-                .set("justify-content", "center"); // Centra il testo all'interno
+        VerticalLayout vl=new VerticalLayout();
+        vl.setAlignItems(Alignment.CENTER);
+        vl.setJustifyContentMode(JustifyContentMode.CENTER);
+        vl.setPadding(false);
+        vl.setMargin(false);
+        Span button = new Span();
+        button.addClassName(style);
 
+        vl.add(button);
+        vl.add(new Label(labelText));
         // Aggiungi listener di click per ogni pulsante
         button.addClickListener(event -> {
             handleButtonClick(labelText); // Gestisce l'evento per ogni pulsante
         });
 
         // Layout verticale per etichetta + pulsante
-
-        return button;
+        return vl;
     }
 
     // Gestione evento del click per ciascun pulsante

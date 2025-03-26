@@ -3,6 +3,7 @@ package org.vaadin.example.view;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLayout;
@@ -21,6 +22,7 @@ import java.util.List;
 
 @Component
 @UIScope
+@CssImport("./styles/roundButtonsStyles.css")
 public class MainLayout extends VerticalLayout implements RouterLayout {
     private final EventService eventService;
     List<RuoloDTO> listaRuoli;
