@@ -1,35 +1,32 @@
 package org.vaadin.example.components;
 
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.ComponentUtil;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.stereotype.Component;
 import org.vaadin.example.Store;
+import org.vaadin.example.events.TabComplessiChangeEvent;
 import org.vaadin.example.model.AbilitazioniComplessiDTO;
-import org.vaadin.example.model.RuoloDTO;
 import org.vaadin.example.model.UtenteDTO;
+import org.vaadin.example.service.EventService;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 @Component
 @UIScope
 public class ComplessiComponent extends HorizontalLayout {
-
+    private final EventService eventService;
     private ArrayList<AbilitazioniComplessiDTO> complessi = null;
     private UtenteDTO utente=null;
     private final Tabs tabs = new Tabs();
-    private final Div content = new Div();
-    private final Map<Tab, Div> tabContentMap = new LinkedHashMap<>();
 
 
-    public ComplessiComponent() {
+    public ComplessiComponent(EventService eventService) {
+        this.eventService = eventService;
         Store store = VaadinSession.getCurrent().getAttribute(Store.class);
         this.utente= store.utente;
         this.complessi = utente.getComplessi();
@@ -38,24 +35,33 @@ public class ComplessiComponent extends HorizontalLayout {
         loadTabs();
         tabs.setWidthFull();
         add(tabs);
-
+        addChangeListener();
+        fireChangeTab((Tab) tabs.getComponentAt(0));
 
     }
     private void loadTabs() {
         for (AbilitazioniComplessiDTO complesso : complessi) {
-            Tab tab = new Tab(complesso.getNome());
-//            VerticalLayout label = new VerticalLayout();
-//            label.add(new Label("Sostenuti: " + complesso.getCostiSostenuti().toString()));
-//            label.add(new Label("Stanziamento: " + complesso.getImportoStanziato().toString()));
-//
-//            tab.add(label);
+            Tab tab = new Tab(complesso.getCodice());
             tabs.add(tab);
         }
+    }
 
-        // Mostra il contenuto del primo tab di default
-        if (!tabContentMap.isEmpty()) {
-            content.add(tabContentMap.values().iterator().next());
-        }
+    private void addChangeListener() {
+
+        tabs.addSelectedChangeListener(tab -> {
+
+            fireChangeTab(tab.getSelectedTab());
+        });
+
+    }
+
+    private void fireChangeTab(Tab tab) {
+        AbilitazioniComplessiDTO a = complessi.stream()
+                .filter(compl ->
+                        tab.getLabel().equals(compl.getCodice())
+                ).findFirst().get();
+
+        ComponentUtil.fireEvent(UI.getCurrent(),new TabComplessiChangeEvent(UI.getCurrent(),a));
     }
 }
 

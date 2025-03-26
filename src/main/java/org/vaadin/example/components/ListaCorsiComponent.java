@@ -1,17 +1,20 @@
 package org.vaadin.example.components;
 
+import com.vaadin.flow.component.ComponentUtil;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.listbox.ListBox;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.data.provider.Query;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
+import com.vaadin.flow.spring.annotation.UIScope;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.vaadin.example.Utility;
+import org.vaadin.example.events.TabComplessiChangeEvent;
+import org.vaadin.example.model.AbilitazioniComplessiDTO;
 import org.vaadin.example.model.CorsoDTO;
-import org.vaadin.example.model.UtenteDTO;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,11 +23,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@UIScope
 public class ListaCorsiComponent extends BaseCardVertical {
 
     private final ListBox<CorsoDTO> itemList= new ListBox<>();
     private List<CorsoDTO> fullList= new ArrayList<>();
-
+    private DatePicker datePicker = new DatePicker("Seleziona una data");
+    private AbilitazioniComplessiDTO complessoSelezionato;
     public ListaCorsiComponent() {
         setSizeFull();
         setHeight("50vh");
@@ -52,22 +57,33 @@ public class ListaCorsiComponent extends BaseCardVertical {
         ol.setJustifyContentMode(JustifyContentMode.END);
         ol.setAlignItems(Alignment.BASELINE);
         // Creazione del DatePicker
-        DatePicker datePicker = new DatePicker("Seleziona una data");
         datePicker.setClearButtonVisible(true);
-        datePicker.addValueChangeListener(event -> filterGrid(event.getValue()));
+        datePicker.addValueChangeListener(event -> filterGrid(event.getValue(),complessoSelezionato));
         datePicker.setValue(LocalDate.now());
+
         // Popolamento dati
         ol.add(datePicker);
 
         // Aggiunta dei componenti al layout
         add(ol, itemList);
+
+
+        ComponentUtil.addListener(UI.getCurrent(), TabComplessiChangeEvent.class, event->
+                UI.getCurrent().access(() -> {
+                    filterGrid(datePicker.getValue(),event.getSelectedValue());
+                    this.complessoSelezionato=event.getSelectedValue();
+                })
+        );
+
+
     }
 
     // Metodo per filtrare la tabella in base alla data selezionata
-    private void filterGrid(LocalDate selectedDate) {
+    private void filterGrid(LocalDate selectedDate, AbilitazioniComplessiDTO complessoSelezionato) {
         if (selectedDate != null) {
             List<CorsoDTO> filteredList = fullList
-                .stream().filter(item -> item.getDataInizio().toLocalDate().equals(selectedDate))
+                .stream().filter(item -> item.getDataInizio().toLocalDate().equals(selectedDate)
+                                && item.getIdComplesso().equals(complessoSelezionato.getId()))
                 .collect(Collectors.toList());
             itemList.setItems(filteredList);
         }
@@ -76,32 +92,8 @@ public class ListaCorsiComponent extends BaseCardVertical {
     // Simulazione di dati finti
     private List<CorsoDTO> getMockData() {
         CorsoDTO[] corsi = Utility.loadJson2("listaCorsi.json",  CorsoDTO[].class);
-
         return Arrays.asList(corsi);
     }
 
-    // Classe interna per gli elementi della tabella
-    public static class Item {
-        private LocalDate date;
-        private String name;
-        private int value;
 
-        public Item(LocalDate date, String name, int value) {
-            this.date = date;
-            this.name = name;
-            this.value = value;
-        }
-
-        public LocalDate getDate() {
-            return date;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getValue() {
-            return value;
-        }
-    }
 }

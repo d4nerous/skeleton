@@ -27,29 +27,29 @@
   "complessi": [
     {
       "id": 1,
-      "nome": "CYT",
-      "codice": 232,
+      "nome": "DESCRIZIONE CYT",
+      "codice": "CYT",
       "importoStanziato":100000,
       "costiSostenuti": 1000
     },
     {
       "id": 2,
-      "nome": "SLL",
-      "codice": 232,
+      "nome": "DESCRIZIONE SLL",
+      "codice": "SLL",
       "importoStanziato":100000,
       "costiSostenuti": 3000
     },
     {
       "id": 3,
-      "nome": "LIN",
-      "codice": 232,
+      "nome": "DESCRIZIONE LIN",
+      "codice": "LIN",
       "importoStanziato":100000,
       "costiSostenuti": 4000
     },
     {
       "id": 4,
-      "nome": "SFP",
-      "codice": 232,
+      "nome": "DESCRIZIONE SFP",
+      "codice": "SFP",
       "importoStanziato":100000,
       "costiSostenuti": 5000
     }

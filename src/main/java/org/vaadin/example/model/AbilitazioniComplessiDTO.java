@@ -3,7 +3,7 @@ package org.vaadin.example.model;
 public class AbilitazioniComplessiDTO {
     private Long id;
     private String nome;
-    private Integer codice;
+    private String codice;
     private Double importoStanziato;
     private Double costiSostenuti;
 
@@ -23,11 +23,11 @@ public class AbilitazioniComplessiDTO {
         this.nome = nome;
     }
 
-    public Integer getCodice() {
+    public String getCodice() {
         return codice;
     }
 
-    public void setCodice(Integer codice) {
+    public void setCodice(String codice) {
         this.codice = codice;
     }
 

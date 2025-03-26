@@ -5,7 +5,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.stereotype.Component;
-import org.vaadin.example.components.*;
+import org.vaadin.example.components.ComplessiComponent;
+import org.vaadin.example.components.LeftColumnBottonComponent;
+import org.vaadin.example.components.RightColumnComponent;
+import org.vaadin.example.components.RoundButtonComponent;
 import org.vaadin.example.service.EventService;
 
 @Route(value = "operatore-view", layout = MainLayout.class)
@@ -24,21 +27,20 @@ public class OperatoreView extends HorizontalLayout {
         this.rightColumnComponent = new RightColumnComponent();
         this.mainLayout = new HorizontalLayout();
         this.roundButtonComponent = new RoundButtonComponent();
-        this.complessiComponent = new ComplessiComponent();
+        this.complessiComponent = new ComplessiComponent(eventService);
 
         buildUI();
     }
 
     private void buildUI() {
         setWidthFull();
-
-
         VerticalLayout layoutDestro = new VerticalLayout();
         HorizontalLayout orizzontale = new HorizontalLayout();
         orizzontale.add(roundButtonComponent,rightColumnComponent);
         orizzontale.setWidthFull();
         orizzontale.setHeightFull();
-        layoutDestro.add(complessiComponent, orizzontale);
+        layoutDestro.add(complessiComponent,
+                        orizzontale);
         layoutDestro.setHeightFull();
         layoutDestro.setWidth("80vw");
         mainLayout.setAlignItems(Alignment.START); // Allinea il contenuto verticalmente al centro
