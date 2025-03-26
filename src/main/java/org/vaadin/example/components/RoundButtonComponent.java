@@ -2,10 +2,7 @@ package org.vaadin.example.components;
 
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.UI;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H4;
-import com.vaadin.flow.component.html.H5;
-import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -21,7 +18,12 @@ public class RoundButtonComponent extends Div {
 
     private final ListaCorsiComponent listaCorsiComponent;
     private final HorizontalLayout title = new HorizontalLayout();
+    private VerticalLayout costi = new VerticalLayout();
     private final VerticalLayout layout = new VerticalLayout();
+    private final Span roundButton = new Span();
+    private final HorizontalLayout button= new HorizontalLayout(roundButton,new H5("CORSI DA ATTIVARE"));
+    private final HorizontalLayout labelAbove = new HorizontalLayout(button,costi);
+
 
     public RoundButtonComponent() {
         this.listaCorsiComponent = new ListaCorsiComponent();
@@ -33,29 +35,41 @@ public class RoundButtonComponent extends Div {
 
 
 // Bottone circolare
-        Span roundButton = new Span();
         roundButton.addClassName("sfera-grigia");
+        roundButton.getStyle().set("height","72px");
+        roundButton.getStyle().set("width","72px");
 
-// Label sopra e sotto il bottone
-        HorizontalLayout labelAbove = new HorizontalLayout(roundButton,new H5("CORSI DA ATTIVARE"));
-        HorizontalLayout labelBelow = new HorizontalLayout(new H5("PLANNING ATTIVITA' DEL SETTORE"));
+        button.getStyle().set("border","1px solid grey");
+        button.getStyle().set("border-radius","20px");
+        button.getStyle().set("box-shadow","2px 4px 5px 5px #5d222221");
+        button.setPadding(true);
+        button.setWidthFull();
+        button.setMargin(true);
+
         title.setAlignItems(FlexComponent.Alignment.CENTER);
         title.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
-        labelAbove.setHeightFull();
+
+
+        button.setHeightFull();
+        button.setWidthFull();
+        button.setAlignItems(FlexComponent.Alignment.CENTER);
+        button.setJustifyContentMode(FlexComponent.JustifyContentMode.START);
+
+        labelAbove.setJustifyContentMode(FlexComponent.JustifyContentMode.BETWEEN);
+        labelAbove.setAlignItems(FlexComponent.Alignment.CENTER);;
         labelAbove.setWidthFull();
-        labelAbove.setAlignItems(FlexComponent.Alignment.CENTER);
-        labelAbove.setJustifyContentMode(FlexComponent.JustifyContentMode.START);
-        labelBelow.setWidthFull();
-        labelBelow.setHeightFull();
-        labelBelow.setAlignItems(FlexComponent.Alignment.BASELINE);
-        labelBelow.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
-// Aggiunta degli elementi nel layout
-        layout.add(labelAbove, labelBelow);
+
+        layout.add(labelAbove);
 
 
         ComponentUtil.addListener(UI.getCurrent(), TabComplessiChangeEvent.class,event->
             UI.getCurrent().access(() -> {
+                int indexcosti=this.labelAbove.indexOf(costi);
                 removeSome();
+                this.costi=new VerticalLayout();
+                this.labelAbove.addComponentAtIndex(indexcosti,costi);
+                this.costi.add(new Label("Importo stanziato: "+event.getSelectedValue().getImportoStanziato()));
+                this.costi.add(new Label("Costi sostenuti:    "+event.getSelectedValue().getCostiSostenuti()));
                 this.title.add(new H4(event.getSelectedValue().getNome()));
                 add(title);
                 add(layout);
@@ -77,6 +91,7 @@ public class RoundButtonComponent extends Div {
 
     private void removeSome(){
         this.title.removeAll();
+        this.labelAbove.remove(costi);
         remove(title);
         remove(layout);
         remove(listaCorsiComponent);

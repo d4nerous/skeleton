@@ -23,6 +23,7 @@ import java.util.List;
 @Component
 @UIScope
 @CssImport("./styles/roundButtonsStyles.css")
+@CssImport("./styles/global-Styles.css")
 public class MainLayout extends VerticalLayout implements RouterLayout {
     private final EventService eventService;
     List<RuoloDTO> listaRuoli;
@@ -33,6 +34,7 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
         this.eventService=eventService;
         this.store=store;
         this.listaRuoli=store.utente.getRoles();
+        setPadding(false);
         if(store.ruoloSelected==null){
             openRoleSelectionDialog(navbarComponent);
         }
@@ -48,6 +50,7 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
         ComboBox<RuoloDTO> ruoloComboBox = new ComboBox<>("Seleziona il tuo ruolo");
         ruoloComboBox.setItems(listaRuoli);
         ruoloComboBox.setItemLabelGenerator(RuoloDTO::getName);
+        ruoloComboBox.getElement().setAttribute("theme", "light");
 
         // Bottone per confermare la selezione
         Button confirmButton = new Button("Conferma", event -> {
@@ -62,10 +65,6 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
                 roleDialog.close();
                 add(navbarComponent);
                 navbarComponent.setRuoloComboBox(ruoloComboBox.getValue());
-
-
-
-
 
             }
         });

@@ -1,6 +1,6 @@
 .sfera-grigia{
-width:72px;
-height:72px;
+width:16px;
+height:16px;
 border-radius:50%;
 background:radial-gradient(circle at 30% 30%,white,grey 60%,darkgrey);
 color:--lumo-primary-text-color;
@@ -11,8 +11,8 @@ box-shadow:inset -10px -10px 15px rgba(0,0,0,0.5)
 inset 10px 10px 15px rgba(255,255,255,0.5);
 }
 .sfera-rossa{
-width:72px;
-height:72px;
+width:16px;
+height:16px;
 border-radius:50%;
 background:radial-gradient(circle at 30% 30%,white,red 60%,darkred);
 color:--lumo-primary-text-color;
@@ -23,8 +23,8 @@ box-shadow:inset -10px -10px 15px rgba(0,0,0,0.5)
 inset 10px 10px 15px rgba(255,255,255,0.5);
 }
 .sfera-verde{
-width:72px;
-height:72px;
+width:16px;
+height:16px;
 border-radius:50%;
 background:radial-gradient(circle at 30% 30%,white,green 60%,darkgreen);
 color:--lumo-primary-text-color;
@@ -35,8 +35,8 @@ box-shadow:inset -10px -10px 15px rgba(0,0,0,0.5)
 inset 10px 10px 15px rgba(255,255,255,0.5);
 }
 .sfera-blue{
-width:72px;
-height:72px;
+width:16px;
+height:16px;
 border-radius:50%;
 background:radial-gradient(circle at 30% 30%,white,blue 60%,darkblue);
 color:--lumo-primary-text-color;
@@ -47,8 +47,8 @@ box-shadow:inset -10px -10px 15px rgba(0,0,0,0.5)
 inset 10px 10px 15px rgba(255,255,255,0.5);
 }
 .sfera-azure{
-width:72px;
-height:72px;
+width:16px;
+height:16px;
 border-radius:50%;
 background:radial-gradient(circle at 30% 30%,white,cyan 60%,darkturquoise);
 color:--lumo-primary-text-color;
@@ -59,8 +59,8 @@ box-shadow:inset -10px -10px 15px rgba(0,0,0,0.5)
 inset 10px 10px 15px rgba(255,255,255,0.5);
 }
 .rettangolo-yellow{
-width:92px;
-height:72px;
+width:30px;
+height:16px;
 background:radial-gradient(circle at 30% 30%,white,yellow 60%,yellow);
 color:--lumo-primary-text-color;
 font-size:20px;

@@ -4,8 +4,10 @@ import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.html.H4;
+import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.listbox.ListBox;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.spring.annotation.UIScope;
@@ -28,7 +30,7 @@ public class ListaCorsiComponent extends BaseCardVertical {
 
     private final ListBox<CorsoDTO> itemList= new ListBox<>();
     private List<CorsoDTO> fullList= new ArrayList<>();
-    private DatePicker datePicker = new DatePicker("Seleziona una data");
+    private final DatePicker datePicker = new DatePicker("Seleziona una data");
     private AbilitazioniComplessiDTO complessoSelezionato;
     public ListaCorsiComponent() {
         setSizeFull();
@@ -60,9 +62,14 @@ public class ListaCorsiComponent extends BaseCardVertical {
         datePicker.setClearButtonVisible(true);
         datePicker.addValueChangeListener(event -> filterGrid(event.getValue(),complessoSelezionato));
         datePicker.setValue(LocalDate.now());
+        HorizontalLayout labelBelow = new HorizontalLayout(new H5("PLANNING ATTIVITA' DEL SETTORE"));
+        labelBelow.setWidthFull();
+        labelBelow.setHeightFull();
+        labelBelow.setAlignItems(FlexComponent.Alignment.BASELINE);
+        labelBelow.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
 
         // Popolamento dati
-        ol.add(datePicker);
+        ol.add(labelBelow,datePicker);
 
         // Aggiunta dei componenti al layout
         add(ol, itemList);

@@ -57,10 +57,11 @@ public class NavbarComponent extends BaseCardHorizontal {
         annoFormativoComboBox.setItems(listaAnni);
         annoFormativoComboBox.setItemLabelGenerator(AnnoFormtivoDTO::getDescrizione);
 
-
+        getStyle().set("background","royalblue").set("color","white");
         setWidthFull();
         setPadding(true);
         setSpacing(true);
+        setMargin(false);
         setDefaultVerticalComponentAlignment(Alignment.CENTER);
 
         // Titolo
