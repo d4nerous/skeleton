@@ -3,12 +3,14 @@ package org.vaadin.example.components;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.listbox.ListBox;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.context.event.EventListener;
@@ -32,10 +34,17 @@ public class ListaCorsiComponent extends BaseCardVertical {
     private List<CorsoDTO> fullList= new ArrayList<>();
     private final DatePicker datePicker = new DatePicker("Seleziona una data");
     private AbilitazioniComplessiDTO complessoSelezionato;
+    private VerticalLayout listBoxContainer = new VerticalLayout();
+
+    private final HorizontalLayout nessunRisulatato=new HorizontalLayout(new H3("Non ci sono attività presenti"));
     public ListaCorsiComponent() {
         setSizeFull();
-        setHeight("50vh");
+        setHeight("43vh");
         getStyle().set("overflow","auto");
+        listBoxContainer.setWidth("30vh");
+        listBoxContainer.setWidthFull();
+        listBoxContainer.getStyle().set("overflow","auto");
+        nessunRisulatato.setWidthFull();
 
         itemList.setRenderer(new ComponentRenderer<>(corso -> {
             HorizontalLayout row = new HorizontalLayout();
@@ -53,7 +62,7 @@ public class ListaCorsiComponent extends BaseCardVertical {
         fullList=getMockData();
         itemList.setItems(fullList);
         itemList.setWidthFull();
-
+        listBoxContainer.add(fullList.isEmpty()?nessunRisulatato:itemList);
 
         HorizontalLayout ol= new HorizontalLayout();
         ol.setJustifyContentMode(JustifyContentMode.END);
@@ -72,7 +81,8 @@ public class ListaCorsiComponent extends BaseCardVertical {
         ol.add(labelBelow,datePicker);
 
         // Aggiunta dei componenti al layout
-        add(ol, itemList);
+
+        add(ol, listBoxContainer);
 
 
         ComponentUtil.addListener(UI.getCurrent(), TabComplessiChangeEvent.class, event->
@@ -88,11 +98,15 @@ public class ListaCorsiComponent extends BaseCardVertical {
     // Metodo per filtrare la tabella in base alla data selezionata
     private void filterGrid(LocalDate selectedDate, AbilitazioniComplessiDTO complessoSelezionato) {
         if (selectedDate != null) {
+            listBoxContainer.removeAll();
             List<CorsoDTO> filteredList = fullList
                 .stream().filter(item -> item.getDataInizio().toLocalDate().equals(selectedDate)
                                 && item.getIdComplesso().equals(complessoSelezionato.getId()))
                 .collect(Collectors.toList());
             itemList.setItems(filteredList);
+
+            listBoxContainer.add(filteredList.isEmpty()?nessunRisulatato:itemList);
+
         }
     }
 

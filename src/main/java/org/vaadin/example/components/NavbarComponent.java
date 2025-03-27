@@ -4,8 +4,11 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.textfield.TextFieldVariant;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.spring.annotation.UIScope;
+import com.vaadin.flow.theme.Theme;
+import com.vaadin.flow.theme.lumo.Lumo;
 import org.springframework.stereotype.Component;
 import org.vaadin.example.Store;
 import org.vaadin.example.model.AnnoFormtivoDTO;
@@ -14,6 +17,7 @@ import org.vaadin.example.model.UtenteDTO;
 import org.vaadin.example.service.EventService;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 @Component
 @UIScope
@@ -51,11 +55,16 @@ public class NavbarComponent extends BaseCardHorizontal {
 
         ruoloComboBox.setItems(listaRuoli);
         ruoloComboBox.setItemLabelGenerator(RuoloDTO::getName);
+        ruoloComboBox.getStyle().set("color","white !important");
         if(this.ruoloSelected!=null)
             ruoloComboBox.setValue(ruoloSelected);
 
+        listaAnni.sort(Comparator.comparingInt(AnnoFormtivoDTO::getAnno).reversed());
         annoFormativoComboBox.setItems(listaAnni);
         annoFormativoComboBox.setItemLabelGenerator(AnnoFormtivoDTO::getDescrizione);
+        annoFormativoComboBox.getStyle().set("color","white !important");
+        annoFormativoComboBox.setValue(listaAnni.get(0));
+
 
         getStyle().set("background","royalblue").set("color","white");
         setWidthFull();
@@ -100,5 +109,8 @@ public class NavbarComponent extends BaseCardHorizontal {
 
     public void setRuoloComboBox(RuoloDTO ruolo) {
         this.ruoloComboBox.setValue(ruolo);
+    }
+    public void setAnnoFormativoBox(AnnoFormtivoDTO of) {
+        this.annoFormativoComboBox.setValue(of);
     }
 }

@@ -7,21 +7,21 @@
   "roles": [
     {
       "id": 101,
-      "name": "operatore"
+      "name": "Operatore"
     },
     {
       "id": 102,
-      "name": "altro"
+      "name": "Altro"
     }
   ],
 "anni":[
   {
-    "anno": 2024,
-    "descrizione": "Anno formativo 2024-2025"
+    "anno": 2025,
+    "descrizione": "Offerta formativa 2025"
   },
   {
-    "anno": 2023,
-    "descrizione": "Anno formativo 2023-2024"
+    "anno": 2024,
+    "descrizione": "Offerta formativa 2024"
   }
 ],
   "complessi": [

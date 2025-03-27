@@ -33,6 +33,7 @@ public class LeftColumnBottonComponent extends BaseCardVertical {
         vl.getStyle().set("border","1px solid "+color);
         vl.getStyle().set("border-radius","20px");
         vl.getStyle().set("box-shadow","2px 4px 5px 5px #5d222221");
+        vl.getStyle().set("cursor","pointer");
         vl.setAlignItems(Alignment.CENTER);
         vl.setJustifyContentMode(JustifyContentMode.START);
         vl.setPadding(true);
@@ -42,7 +43,7 @@ public class LeftColumnBottonComponent extends BaseCardVertical {
         Span button = new Span();
         button.addClassName(style);
         // Aggiungi listener di click per ogni pulsante
-        button.addClickListener(event -> {
+        vl.addClickListener(event -> {
             handleButtonClick(labelText); // Gestisce l'evento per ogni pulsante
         });
 

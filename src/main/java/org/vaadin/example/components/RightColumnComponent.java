@@ -12,12 +12,10 @@ public class RightColumnComponent extends BaseCardVertical {
         setWidth("15vw");
         setAlignItems(Alignment.CENTER);  // Centra i pulsanti
 
-        // Aggiungi i 5 pulsanti con testo
-        add(createButton("Pulsante 1", "evento1"));
-        add(createButton("Pulsante 2", "evento2"));
-        add(createButton("Pulsante 3", "evento3"));
-        add(createButton("Pulsante 4", "evento4"));
-        add(createButton("Pulsante 5", "evento5"));
+        add(createButton("Screening Sicurezza", "evento1"));
+        add(createButton("Attività Discenti", "evento2"));
+        add(createButton("Attività Docenti", "evento3"));
+        add(createButton("Compensi", "evento4"));
 
 
     }
