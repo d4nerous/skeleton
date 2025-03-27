@@ -7,12 +7,12 @@ import java.util.Objects;
 public class UtenteDTO {
 
 
-    private Integer id=null;
-    private String username=null;
-    private String name =null;
-    private String surname     =null;
-    private String email=null;
-    private ArrayList<RuoloDTO> roles   =new ArrayList<RuoloDTO>();
+    private Integer id = null;
+    private String username = null;
+    private String name = null;
+    private String surname = null;
+    private String email = null;
+    private ArrayList<RuoloDTO> roles = new ArrayList<RuoloDTO>();
     private ArrayList<AnnoFormtivoDTO> anni = new ArrayList<>();
     private ArrayList<AbilitazioniComplessiDTO> complessi = new ArrayList<>();
 
@@ -24,58 +24,60 @@ public class UtenteDTO {
         this.complessi = complessi;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setRoles(ArrayList<RuoloDTO> roles) {
-        this.roles = roles;
-    }
-    public void setAnni(ArrayList<AnnoFormtivoDTO> anni) {
-        this.anni = anni;
-    }
-
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSurname() {
         return surname;
     }
 
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public ArrayList<RuoloDTO> getRoles() {
         return roles;
     }
+
+    public void setRoles(ArrayList<RuoloDTO> roles) {
+        this.roles = roles;
+    }
+
     public ArrayList<AnnoFormtivoDTO> getAnni() {
         return anni;
+    }
+
+    public void setAnni(ArrayList<AnnoFormtivoDTO> anni) {
+        this.anni = anni;
     }
 
     @Override

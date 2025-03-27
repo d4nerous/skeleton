@@ -7,7 +7,6 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.spring.annotation.UIScope;
-
 import org.springframework.stereotype.Component;
 import org.vaadin.example.Store;
 import org.vaadin.example.model.AnnoFormtivoDTO;
@@ -23,47 +22,47 @@ import java.util.Comparator;
 public class NavbarComponent extends BaseCardHorizontal {
 
     private ComboBox<AnnoFormtivoDTO> annoFormativoComboBox = new ComboBox<>("Anno");
-    private ComboBox<RuoloDTO> ruoloComboBox= new ComboBox<>("Ruolo");
+    private ComboBox<RuoloDTO> ruoloComboBox = new ComboBox<>("Ruolo");
     private Span nome;
     private EventService eventService;
 
-    private UtenteDTO utente=null;
-    private ArrayList<RuoloDTO> listaRuoli=null;
-    private ArrayList<AnnoFormtivoDTO> listaAnni=null;
-    private RuoloDTO ruoloSelected=null;
+    private UtenteDTO utente = null;
+    private ArrayList<RuoloDTO> listaRuoli = null;
+    private ArrayList<AnnoFormtivoDTO> listaAnni = null;
+    private RuoloDTO ruoloSelected = null;
 
 
     public NavbarComponent(EventService eventService) {
         Store store = VaadinSession.getCurrent().getAttribute(Store.class);
-        this.eventService=eventService;
-        this.utente= store.utente;
-        this.listaRuoli=this.utente.getRoles();
+        this.eventService = eventService;
+        this.utente = store.utente;
+        this.listaRuoli = this.utente.getRoles();
         this.listaAnni = this.utente.getAnni();
-        this.ruoloSelected=store.ruoloSelected;
+        this.ruoloSelected = store.ruoloSelected;
 
         buildUI();
         addListener();
 
     }
 
-    private void buildUI(){
+    private void buildUI() {
 
         ruoloComboBox.setItems(listaRuoli);
         ruoloComboBox.setItemLabelGenerator(RuoloDTO::getName);
-        ruoloComboBox.getStyle().set("color","white !important");
-        if(this.ruoloSelected!=null)
+        ruoloComboBox.getStyle().set("color", "white !important");
+        if (this.ruoloSelected != null)
             ruoloComboBox.setValue(ruoloSelected);
 
         listaAnni.sort(Comparator.comparingInt(AnnoFormtivoDTO::getAnno).reversed());
         annoFormativoComboBox.setItems(listaAnni);
         annoFormativoComboBox.setItemLabelGenerator(AnnoFormtivoDTO::getDescrizione);
-        annoFormativoComboBox.getStyle().set("color","white !important");
+        annoFormativoComboBox.getStyle().set("color", "white !important");
         annoFormativoComboBox.setValue(listaAnni.get(0));
 
 
-        getStyle().set("background","royalblue")
-                .set("color","white").
-                set("border-radius","0px 0px 10px 10px");
+        getStyle().set("background", "royalblue")
+                .set("color", "white").
+                set("border-radius", "0px 0px 10px 10px");
         setWidthFull();
         setPadding(true);
         setSpacing(true);
@@ -75,12 +74,12 @@ public class NavbarComponent extends BaseCardHorizontal {
         title.getStyle().set("font-size", "20px").set("font-weight", "bold");
         title.setWidth("300px");
         // Label con ID utente
-        nome = new Span(utente.getName()+" "+utente.getSurname());
+        nome = new Span(utente.getName() + " " + utente.getSurname());
 
-        Icon iconNotification= VaadinIcon.BELL_O.create();
+        Icon iconNotification = VaadinIcon.BELL_O.create();
         iconNotification.setColor("white");
         // Layout per allineare gli elementi a destra
-        HorizontalLayout rightLayout = new HorizontalLayout(annoFormativoComboBox, ruoloComboBox, nome,iconNotification);
+        HorizontalLayout rightLayout = new HorizontalLayout(annoFormativoComboBox, ruoloComboBox, nome, iconNotification);
         rightLayout.setWidthFull();
         rightLayout.setJustifyContentMode(JustifyContentMode.END);
         rightLayout.setAlignItems(Alignment.BASELINE);
@@ -89,8 +88,7 @@ public class NavbarComponent extends BaseCardHorizontal {
     }
 
 
-
-    private void addListener(){
+    private void addListener() {
         // Quando cambia il valore di annoFormativoComboBox, aggiorna il servizio
         annoFormativoComboBox.addValueChangeListener(event -> {
             if (event.getValue() != null) {
@@ -109,6 +107,7 @@ public class NavbarComponent extends BaseCardHorizontal {
     public void setRuoloComboBox(RuoloDTO ruolo) {
         this.ruoloComboBox.setValue(ruolo);
     }
+
     public void setAnnoFormativoBox(AnnoFormtivoDTO of) {
         this.annoFormativoComboBox.setValue(of);
     }

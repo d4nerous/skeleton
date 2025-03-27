@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class Utility {
 
 
-    public  static <T> T loadJson(String filename, Class<T> clazz) {
+    public static <T> T loadJson(String filename, Class<T> clazz) {
         ObjectMapper objectMapper = new ObjectMapper();
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         objectMapper.registerModule(new JavaTimeModule());

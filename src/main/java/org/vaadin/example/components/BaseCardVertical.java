@@ -10,7 +10,7 @@ public class BaseCardVertical extends VerticalLayout {
 
 
         getStyle()
-                .set("background","white")
+                .set("background", "white")
                 .set("box-shadow", "1px 5px 5px 5px #e5e5e5")
                 .set("border-radius", "10px");
     }

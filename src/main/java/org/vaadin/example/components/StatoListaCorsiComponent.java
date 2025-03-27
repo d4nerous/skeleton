@@ -18,8 +18,8 @@ public class StatoListaCorsiComponent extends HorizontalLayout {
 
         Span roundButton = new Span();
         roundButton.addClassName("sfera-grigia");
-        roundButton.getStyle().set("height","35px");
-        roundButton.getStyle().set("width","35px");
+        roundButton.getStyle().set("height", "35px");
+        roundButton.getStyle().set("width", "35px");
 
         Icon plusIcon = VaadinIcon.PLUS.create();
         plusIcon.getStyle().set("color", "white"); // Imposta il colore verde
@@ -35,7 +35,7 @@ public class StatoListaCorsiComponent extends HorizontalLayout {
         setAlignItems(Alignment.CENTER); // Centra verticalmente
 
         // Aggiunge il titolo al layout
-        add(roundButton,title,addButton);
+        add(roundButton, title, addButton);
 
     }
 

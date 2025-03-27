@@ -18,14 +18,14 @@ import java.util.ArrayList;
 @Component
 @UIScope
 public class ComplessiComponent extends HorizontalLayout {
-    private ArrayList<AbilitazioniComplessiDTO> complessi = null;
-    private UtenteDTO utente=null;
     private final Tabs tabs = new Tabs();
+    private ArrayList<AbilitazioniComplessiDTO> complessi = null;
+    private UtenteDTO utente = null;
 
 
     public ComplessiComponent() {
         Store store = VaadinSession.getCurrent().getAttribute(Store.class);
-        this.utente= store.utente;
+        this.utente = store.utente;
         this.complessi = utente.getComplessi();
         setWidthFull();
 
@@ -36,6 +36,7 @@ public class ComplessiComponent extends HorizontalLayout {
         fireChangeTab((Tab) tabs.getComponentAt(0));
 
     }
+
     private void loadTabs() {
         for (AbilitazioniComplessiDTO complesso : complessi) {
             Tab tab = new Tab(complesso.getCodice());
@@ -57,7 +58,7 @@ public class ComplessiComponent extends HorizontalLayout {
                         tab.getLabel().equals(compl.getCodice())
                 ).findFirst().get();
 
-        ComponentUtil.fireEvent(UI.getCurrent(),new TabComplessiChangeEvent(UI.getCurrent(),a));
+        ComponentUtil.fireEvent(UI.getCurrent(), new TabComplessiChangeEvent(UI.getCurrent(), a));
     }
 }
 

@@ -3,14 +3,14 @@ package org.vaadin.example.model;
 import java.time.LocalDateTime;
 
 public class CorsoDTO {
-    
-               private Long id=null;
-               private Long idComplesso =null;
-               private String codiceSCU =null;
-               private String aula =null;
-               private LocalDateTime dataInizio =null;
-               private LocalDateTime dataFine =null;
-               private String docente =null;
+
+    private Long id = null;
+    private Long idComplesso = null;
+    private String codiceSCU = null;
+    private String aula = null;
+    private LocalDateTime dataInizio = null;
+    private LocalDateTime dataFine = null;
+    private String docente = null;
 
     public Long getId() {
         return id;

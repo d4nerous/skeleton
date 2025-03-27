@@ -5,11 +5,12 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.vaadin.example.components.LeftColumnDettaglioViewComponent;
 
-@Route(value = "dettaglio-view",layout = MainLayout.class)
+@Route(value = "dettaglio-view", layout = MainLayout.class)
 @UIScope
 public class DettaglioView extends VerticalLayout {
     private LeftColumnDettaglioViewComponent leftColumnDettaglioViewComponent;
-    public DettaglioView( LeftColumnDettaglioViewComponent leftColumnDettaglioViewComponent) {
+
+    public DettaglioView(LeftColumnDettaglioViewComponent leftColumnDettaglioViewComponent) {
 
         add(leftColumnDettaglioViewComponent);
         setSizeFull();

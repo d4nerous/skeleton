@@ -30,22 +30,23 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
     private final EventService eventService;
     List<RuoloDTO> listaRuoli;
     Store store;
+
     @Autowired
     public MainLayout(EventService eventService, NavbarComponent navbarComponent) {
         Store store = VaadinSession.getCurrent().getAttribute(Store.class);
-        this.eventService=eventService;
-        this.store=store;
-        this.listaRuoli=store.utente.getRoles();
+        this.eventService = eventService;
+        this.store = store;
+        this.listaRuoli = store.utente.getRoles();
         setPadding(false);
-        getStyle().set("background","#f9f9f9");
-        if(store.ruoloSelected==null){
+        getStyle().set("background", "#f9f9f9");
+        if (store.ruoloSelected == null) {
             openRoleSelectionDialog(navbarComponent);
         }
 
 
         Footer footer = new Footer();
-        Label f=new Label("© 2025 GeCo layout");
-        f.getStyle().set("color","white");
+        Label f = new Label("© 2025 GeCo layout");
+        f.getStyle().set("color", "white");
         footer.add(f);
         footer.getStyle().set("position", "fixed");
         footer.getStyle().set("bottom", "0");
@@ -58,6 +59,7 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
         add(footer);
 
     }
+
     private void openRoleSelectionDialog(NavbarComponent navbarComponent) {
 
 
@@ -76,7 +78,7 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
                 ruoloComboBox.addValueChangeListener(r -> {
                     if (r.getValue() != null) {
                         this.eventService.publishRuoloChange(r.getValue());
-                        this.store.ruoloSelected=r.getValue();
+                        this.store.ruoloSelected = r.getValue();
 
                     }
                 });
@@ -87,7 +89,7 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
             }
         });
 
-        VerticalLayout contentDialog=new VerticalLayout(ruoloComboBox, confirmButton);
+        VerticalLayout contentDialog = new VerticalLayout(ruoloComboBox, confirmButton);
         roleDialog.setWidth("50%");
         roleDialog.setHeight("50%");
         contentDialog.setJustifyContentMode(JustifyContentMode.CENTER);
@@ -95,15 +97,16 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
         roleDialog.add(contentDialog);
         roleDialog.open();
     }
+
     @EventListener
     public void handleRuoloSelection(RuoloSelectionEvent event) {
         // Seleziona se la colonna sinistra deve essere visibile o meno
-        if("Operatore".equalsIgnoreCase(event.getSelectedValue().getName())){
+        if ("Operatore".equalsIgnoreCase(event.getSelectedValue().getName())) {
             UI.getCurrent().navigate("operatore-view");
-        }else if("Altro".equalsIgnoreCase(event.getSelectedValue().getName())){
+        } else if ("Altro".equalsIgnoreCase(event.getSelectedValue().getName())) {
             UI.getCurrent().navigate("altro-view");
-        }else{
+        } else {
             UI.getCurrent().navigate("");
         }
-}
+    }
 }

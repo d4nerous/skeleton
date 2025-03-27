@@ -8,7 +8,7 @@ import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.stereotype.Component;
 import org.vaadin.example.service.EventService;
 
-@Route(value = "altro-view",layout = MainLayout.class)
+@Route(value = "altro-view", layout = MainLayout.class)
 @Component
 @UIScope
 public class AltroView extends VerticalLayout {
@@ -26,18 +26,17 @@ public class AltroView extends VerticalLayout {
     private void buildUI() {
         setWidthFull();
 
-    mainLayout.add(new Span("Ancora Nulla"));
-    mainLayout.setWidthFull();
-    mainLayout.setHeightFull();
-    mainLayout.setAlignItems(Alignment.START); // Allinea il contenuto verticalmente al centro
-    mainLayout.setJustifyContentMode(JustifyContentMode.START) ;
+        mainLayout.add(new Span("Ancora Nulla"));
+        mainLayout.setWidthFull();
+        mainLayout.setHeightFull();
+        mainLayout.setAlignItems(Alignment.START); // Allinea il contenuto verticalmente al centro
+        mainLayout.setJustifyContentMode(JustifyContentMode.START);
 
-    mainLayout.getStyle().set("border","1px solid grey");
+        mainLayout.getStyle().set("border", "1px solid grey");
 
 
-    add( mainLayout);
+        add(mainLayout);
     }
-
 
 
 }

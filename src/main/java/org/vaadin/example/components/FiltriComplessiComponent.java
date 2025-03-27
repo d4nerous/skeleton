@@ -9,7 +9,6 @@ import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.stereotype.Component;
 
 
-
 @Component
 @UIScope
 public class FiltriComplessiComponent extends HorizontalLayout {
@@ -43,7 +42,7 @@ public class FiltriComplessiComponent extends HorizontalLayout {
         setSpacing(true); // Aggiunge spazio tra i componenti
 
         // Aggiunge i componenti al layout
-        add( comboBox1, comboBox2, textField2, comboBox3, searchButton, clearButton);
+        add(comboBox1, comboBox2, textField2, comboBox3, searchButton, clearButton);
     }
 }
 

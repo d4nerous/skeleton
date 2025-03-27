@@ -3,14 +3,16 @@ package org.vaadin.example.components;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.H5;
+import com.vaadin.flow.component.html.Hr;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.listbox.ListBox;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.spring.annotation.UIScope;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.vaadin.example.Utility;
 import org.vaadin.example.events.TabComplessiChangeEvent;
@@ -27,21 +29,20 @@ import java.util.stream.Collectors;
 @UIScope
 public class ListaCorsiComponent extends BaseCardVertical {
 
-    private final ListBox<CorsoDTO> itemList= new ListBox<>();
-    private List<CorsoDTO> fullList= new ArrayList<>();
+    private final ListBox<CorsoDTO> itemList = new ListBox<>();
     private final DatePicker datePicker = new DatePicker("Seleziona una data");
+    private final HorizontalLayout nessunRisulatato = new HorizontalLayout(new H3("Non ci sono attività presenti"));
+    private List<CorsoDTO> fullList = new ArrayList<>();
     private AbilitazioniComplessiDTO complessoSelezionato;
     private VerticalLayout listBoxContainer = new VerticalLayout();
-
-    private final HorizontalLayout nessunRisulatato=new HorizontalLayout(new H3("Non ci sono attività presenti"));
 
     public ListaCorsiComponent() {
         setSizeFull();
         setHeight("43vh");
-        getStyle().set("overflow","auto");
+        getStyle().set("overflow", "auto");
         listBoxContainer.setWidth("30vh");
         listBoxContainer.setWidthFull();
-        listBoxContainer.getStyle().set("overflow","auto");
+        listBoxContainer.getStyle().set("overflow", "auto");
         nessunRisulatato.setWidthFull();
         nessunRisulatato.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         nessunRisulatato.setAlignItems(FlexComponent.Alignment.CENTER);
@@ -50,28 +51,28 @@ public class ListaCorsiComponent extends BaseCardVertical {
             HorizontalLayout row = new HorizontalLayout();
             row.setAlignItems(Alignment.START);
 
-            row.add(new Label(corso.getCodiceSCU() +", "+corso.getAula()+", "
-                    +corso.getDataInizio().getHour()+":"+corso.getDataInizio().getMinute()+" - "
-                    +corso.getDataFine().getHour()+":"+corso.getDataFine().getMinute()+","+
+            row.add(new Label(corso.getCodiceSCU() + ", " + corso.getAula() + ", "
+                    + corso.getDataInizio().getHour() + ":" + corso.getDataInizio().getMinute() + " - "
+                    + corso.getDataFine().getHour() + ":" + corso.getDataFine().getMinute() + "," +
                     corso.getDocente()
 
             ));
             row.getStyle().set("line-height", "var(--lumo-line-height-m)");
             return row;
         }));
-        fullList=getMockData();
+        fullList = getMockData();
         itemList.setItems(fullList);
         itemList.setWidthFull();
-        listBoxContainer.add(fullList.isEmpty()?nessunRisulatato:itemList);
+        listBoxContainer.add(fullList.isEmpty() ? nessunRisulatato : itemList);
         nessunRisulatato.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         nessunRisulatato.setAlignItems(FlexComponent.Alignment.CENTER);
 
-        HorizontalLayout ol= new HorizontalLayout();
+        HorizontalLayout ol = new HorizontalLayout();
         ol.setJustifyContentMode(JustifyContentMode.END);
         ol.setAlignItems(Alignment.BASELINE);
         // Creazione del DatePicker
         datePicker.setClearButtonVisible(true);
-        datePicker.addValueChangeListener(event -> filterGrid(event.getValue(),complessoSelezionato));
+        datePicker.addValueChangeListener(event -> filterGrid(event.getValue(), complessoSelezionato));
         datePicker.setValue(LocalDate.now());
         HorizontalLayout labelBelow = new HorizontalLayout(new H5("PLANNING ATTIVITA' DEL SETTORE"));
         labelBelow.setWidthFull();
@@ -80,17 +81,17 @@ public class ListaCorsiComponent extends BaseCardVertical {
         labelBelow.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
 
         // Popolamento dati
-        ol.add(labelBelow,datePicker);
+        ol.add(labelBelow, datePicker);
 
         // Aggiunta dei componenti al layout
 
-        add(ol,new Hr(), listBoxContainer);
+        add(ol, new Hr(), listBoxContainer);
 
 
-        ComponentUtil.addListener(UI.getCurrent(), TabComplessiChangeEvent.class, event->
+        ComponentUtil.addListener(UI.getCurrent(), TabComplessiChangeEvent.class, event ->
                 UI.getCurrent().access(() -> {
-                    filterGrid(datePicker.getValue(),event.getSelectedValue());
-                    this.complessoSelezionato=event.getSelectedValue();
+                    filterGrid(datePicker.getValue(), event.getSelectedValue());
+                    this.complessoSelezionato = event.getSelectedValue();
                 })
         );
 
@@ -102,12 +103,12 @@ public class ListaCorsiComponent extends BaseCardVertical {
         if (selectedDate != null) {
             listBoxContainer.removeAll();
             List<CorsoDTO> filteredList = fullList
-                .stream().filter(item -> item.getDataInizio().toLocalDate().equals(selectedDate)
-                                && item.getIdComplesso().equals(complessoSelezionato.getId()))
-                .collect(Collectors.toList());
+                    .stream().filter(item -> item.getDataInizio().toLocalDate().equals(selectedDate)
+                            && item.getIdComplesso().equals(complessoSelezionato.getId()))
+                    .collect(Collectors.toList());
             itemList.setItems(filteredList);
 
-            listBoxContainer.add(filteredList.isEmpty()?nessunRisulatato:itemList);
+            listBoxContainer.add(filteredList.isEmpty() ? nessunRisulatato : itemList);
             nessunRisulatato.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
             nessunRisulatato.setAlignItems(FlexComponent.Alignment.CENTER);
         }
@@ -115,7 +116,7 @@ public class ListaCorsiComponent extends BaseCardVertical {
 
     // Simulazione di dati finti
     private List<CorsoDTO> getMockData() {
-        CorsoDTO[] corsi = Utility.loadJson2("listaCorsi.json",  CorsoDTO[].class);
+        CorsoDTO[] corsi = Utility.loadJson2("listaCorsi.json", CorsoDTO[].class);
         return Arrays.asList(corsi);
     }
 

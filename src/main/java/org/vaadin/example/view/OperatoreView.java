@@ -9,7 +9,6 @@ import org.vaadin.example.components.ComplessiComponent;
 import org.vaadin.example.components.LeftColumnBottonComponent;
 import org.vaadin.example.components.RightColumnComponent;
 import org.vaadin.example.components.RoundButtonComponent;
-import org.vaadin.example.service.EventService;
 
 @Route(value = "operatore-view", layout = MainLayout.class)
 @Component
@@ -36,13 +35,13 @@ public class OperatoreView extends HorizontalLayout {
         setWidthFull();
         VerticalLayout layoutDestro = new VerticalLayout();
         HorizontalLayout orizzontale = new HorizontalLayout();
-        orizzontale.add(roundButtonComponent,rightColumnComponent);
+        orizzontale.add(roundButtonComponent, rightColumnComponent);
         orizzontale.setWidthFull();
         orizzontale.setHeightFull();
         layoutDestro.add(complessiComponent,
-                        orizzontale);
+                orizzontale);
         layoutDestro.setHeightFull();
-        layoutDestro.setWidth("80vw");
+        layoutDestro.setWidth("86vw");
         mainLayout.setAlignItems(Alignment.START); // Allinea il contenuto verticalmente al centro
         mainLayout.setJustifyContentMode(JustifyContentMode.START);
 

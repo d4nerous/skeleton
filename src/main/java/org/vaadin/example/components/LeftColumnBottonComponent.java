@@ -1,10 +1,8 @@
 package org.vaadin.example.components;
 
-import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,22 +16,22 @@ public class LeftColumnBottonComponent extends BaseCardVertical {
         setAlignItems(Alignment.CENTER); // Centra gli elementi
 
         // Aggiungi i pulsanti con il testo sopra
-        add(createRoundButtonWithLabel("Corsi Attivati", "sfera-verde","green"));
-        add(createRoundButtonWithLabel("Corsi Chiusi","sfera-rossa","red"));
-        add(createRoundButtonWithLabel("Corsi Annullati", "sfera-blue","blue"));
-        add(createSquareButtonWithLabel("Extra PAF", "rettangolo-yellow","yellow"));
-        add(createRoundButtonWithLabel("Annulla Corso", "sfera-azure","cyan"));
+        add(createRoundButtonWithLabel("Corsi Attivati", "sfera-verde", "green"));
+        add(createRoundButtonWithLabel("Corsi Chiusi", "sfera-rossa", "red"));
+        add(createRoundButtonWithLabel("Corsi Annullati", "sfera-blue", "blue"));
+        add(createSquareButtonWithLabel("Extra PAF", "rettangolo-yellow", "yellow"));
+        add(createRoundButtonWithLabel("Annulla Corso", "sfera-azure", "cyan"));
 
     }
 
     // Metodo per creare un pulsante tondo con etichetta sopra
-    private HorizontalLayout createRoundButtonWithLabel(String labelText, String style,String color) {
+    private HorizontalLayout createRoundButtonWithLabel(String labelText, String style, String color) {
 
-        HorizontalLayout vl=new HorizontalLayout();
-        vl.getStyle().set("border","1px solid "+color);
-        vl.getStyle().set("border-radius","20px");
-        vl.getStyle().set("box-shadow","2px 4px 5px 5px #5d222221");
-        vl.getStyle().set("cursor","pointer");
+        HorizontalLayout vl = new HorizontalLayout();
+        vl.getStyle().set("border", "1px solid " + color);
+        vl.getStyle().set("border-radius", "20px");
+        vl.getStyle().set("box-shadow", "2px 4px 5px 5px #5d222221");
+        vl.getStyle().set("cursor", "pointer");
         vl.setAlignItems(Alignment.CENTER);
         vl.setJustifyContentMode(JustifyContentMode.START);
         vl.setPadding(true);
@@ -53,12 +51,12 @@ public class LeftColumnBottonComponent extends BaseCardVertical {
     }
 
     // Metodo per creare un pulsante quadrato con etichetta sopra
-    private HorizontalLayout createSquareButtonWithLabel(String labelText, String style,String color) {
+    private HorizontalLayout createSquareButtonWithLabel(String labelText, String style, String color) {
         // Pulsante quadrato
-        HorizontalLayout vl=new HorizontalLayout();
-        vl.getStyle().set("border","1px solid "+color);
-        vl.getStyle().set("border-radius","20px");
-        vl.getStyle().set("box-shadow","2px 4px 5px 5px #5d222221");
+        HorizontalLayout vl = new HorizontalLayout();
+        vl.getStyle().set("border", "1px solid " + color);
+        vl.getStyle().set("border-radius", "20px");
+        vl.getStyle().set("box-shadow", "2px 4px 5px 5px #5d222221");
         vl.setAlignItems(Alignment.CENTER);
         vl.setJustifyContentMode(JustifyContentMode.START);
         vl.setWidthFull();
@@ -106,7 +104,6 @@ public class LeftColumnBottonComponent extends BaseCardVertical {
                 System.out.println("Pulsante sconosciuto cliccato");
         }
     }
-
 
 
 //    private String getScreenHeigth() {

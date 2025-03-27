@@ -12,7 +12,9 @@ import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.stereotype.Component;
 import org.vaadin.example.Store;
 import org.vaadin.example.Utility;
-import org.vaadin.example.components.*;
+import org.vaadin.example.components.FiltriComplessiComponent;
+import org.vaadin.example.components.LeftColumnCorsiViewComponent;
+import org.vaadin.example.components.StatoListaCorsiComponent;
 import org.vaadin.example.model.AbilitazioniComplessiDTO;
 import org.vaadin.example.model.CorsiDTO;
 
@@ -26,9 +28,9 @@ import java.util.stream.Collectors;
 @UIScope
 public class CorsiDaAttivareView extends HorizontalLayout implements HasUrlParameter<Long> {
 
+    private final List<AbilitazioniComplessiDTO> listaAbilitazioneComplessi;
     private List<CorsiDTO> fullList = new ArrayList<>();
     private H3 title;
-    private final List<AbilitazioniComplessiDTO> listaAbilitazioneComplessi;
 
     public CorsiDaAttivareView() {
         Store store = VaadinSession.getCurrent().getAttribute(Store.class);
@@ -50,7 +52,7 @@ public class CorsiDaAttivareView extends HorizontalLayout implements HasUrlParam
         wrapperTitle.add(title);
 
 
-        Grid<CorsiDTO> grid = new Grid<>(CorsiDTO.class,false);
+        Grid<CorsiDTO> grid = new Grid<>(CorsiDTO.class, false);
         Grid.Column<CorsiDTO> nomeColumn = grid.addColumn(CorsiDTO::getCodiceSCU).setHeader("Scu");
         Grid.Column<CorsiDTO> cognomeColumn = grid.addColumn(CorsiDTO::getCosto).setHeader("Costo");
 
@@ -61,7 +63,7 @@ public class CorsiDaAttivareView extends HorizontalLayout implements HasUrlParam
         VerticalLayout layoutDestro = new VerticalLayout();
         layoutDestro.add(filtriComplessiComponent, wrapperTitle, statoListaCorsiComponent, grid);
         layoutDestro.setHeightFull();
-        layoutDestro.setWidth("80vw");
+        layoutDestro.setWidth("86vw");
         mainLayout.setAlignItems(Alignment.START); // Allinea il contenuto verticalmente al centro
         mainLayout.setJustifyContentMode(JustifyContentMode.START);
 

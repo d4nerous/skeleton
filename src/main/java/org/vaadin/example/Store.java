@@ -9,7 +9,7 @@ import org.vaadin.example.model.UtenteDTO;
 @VaadinSessionScope
 public class Store {
 
-    public UtenteDTO utente=null;
-    public RuoloDTO ruoloSelected=null;
+    public UtenteDTO utente = null;
+    public RuoloDTO ruoloSelected = null;
 
 }

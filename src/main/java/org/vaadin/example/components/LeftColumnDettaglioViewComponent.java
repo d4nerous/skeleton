@@ -3,7 +3,6 @@ package org.vaadin.example.components;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
@@ -17,7 +16,7 @@ public class LeftColumnDettaglioViewComponent extends VerticalLayout {
         setHeight("70vh");
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.END);
-        getStyle().set("border","1px solid orange");
+        getStyle().set("border", "1px solid orange");
         // Creare le voci della colonna con icone
         HorizontalLayout homeLayout = createButtonWithIcon(VaadinIcon.HOME, "Torna alla Home");
         HorizontalLayout modifyLayout = createButtonWithIcon(VaadinIcon.EDIT, "Modifica");
@@ -37,7 +36,7 @@ public class LeftColumnDettaglioViewComponent extends VerticalLayout {
         HorizontalLayout layout = new HorizontalLayout(iconComponent, textComponent);
         layout.setAlignItems(Alignment.CENTER);
         layout.setSpacing(true);
-        layout.getStyle().set("cursor","pointer");
+        layout.getStyle().set("cursor", "pointer");
         // Impostare l'azione al click del layout (se vuoi una azione)
         layout.addClickListener(e -> {
             // Gestire le azioni cliccando su ciascuna voce
