@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "idComplesso": 1,
+    "codiceSCU": "2025-CYT-XX-001-1",
+    "costo": 500
+  },
+  {
+    "id": 2,
+    "idComplesso": 1,
+    "codiceSCU": "2025-CYT-XX-001-2",
+    "costo": 1000
+  },
+  {
+    "id": 3,
+    "idComplesso": 2,
+    "codiceSCU": "2025-SLL-XX-002-1",
+    "costo": 2000
+  },
+  {
+    "id": 4,
+    "idComplesso": 2,
+    "codiceSCU": "2025-SLL-XX-001-1",
+    "costo": 2000
+  },
+  {
+    "id": 5,
+    "idComplesso": 3,
+    "codiceSCU": "2025-LIN-XX-001-3",
+    "costo": 2000
+  },
+  {
+    "id": 6,
+    "idComplesso": 3,
+    "codiceSCU": "2025-LIN-XX-001-2",
+    "costo": 26000
+  },
+  {
+    "id": 7,
+    "idComplesso": 4,
+    "codiceSCU": "2025-SFP-XX-002-1",
+    "costo": 4000
+  },
+  {
+    "id": 8,
+    "idComplesso": 4,
+    "codiceSCU": "2025-SFP-XX-001-1",
+    "costo": 52000
+  },
+  {
+    "id": 9,
+    "idComplesso": 2,
+    "codiceSCU": "2025-SLL-XX-001-2",
+    "costo": 72000
+  },
+  {
+    "id": 10,
+    "idComplesso": 1,
+    "codiceSCU": "2025-CYT-XX-001-1",
+    "costo": 10000
+  }
+]

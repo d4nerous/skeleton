@@ -1,0 +1,57 @@
+{
+  "id": 1,
+  "username": "utente-1",
+  "name": "Mario",
+  "surname": "Rossi",
+  "email": "jmariorossi@example.com",
+  "roles": [
+    {
+      "id": 101,
+      "name": "Operatore"
+    },
+    {
+      "id": 102,
+      "name": "Altro"
+    }
+  ],
+  "anni": [
+    {
+      "anno": 2025,
+      "descrizione": "Offerta formativa 2025"
+    },
+    {
+      "anno": 2024,
+      "descrizione": "Offerta formativa 2024"
+    }
+  ],
+  "complessi": [
+    {
+      "id": 1,
+      "nome": "DESCRIZIONE CYT",
+      "codice": "CYT",
+      "importoStanziato": 100000,
+      "costiSostenuti": 1000
+    },
+    {
+      "id": 2,
+      "nome": "DESCRIZIONE SLL",
+      "codice": "SLL",
+      "importoStanziato": 100000,
+      "costiSostenuti": 3000
+    },
+    {
+      "id": 3,
+      "nome": "DESCRIZIONE LIN",
+      "codice": "LIN",
+      "importoStanziato": 100000,
+      "costiSostenuti": 4000
+    },
+    {
+      "id": 4,
+      "nome": "DESCRIZIONE SFP",
+      "codice": "SFP",
+      "importoStanziato": 100000,
+      "costiSostenuti": 5000
+    }
+  ]
+}
