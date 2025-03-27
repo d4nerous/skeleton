@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
 @Component
 @UIScope
 public class StatoListaCorsiComponent extends HorizontalLayout {
-    private final Span roundButton = new Span();
     public StatoListaCorsiComponent() {
         H3 title = new H3("Corsi da attivare");
 
+        Span roundButton = new Span();
         roundButton.addClassName("sfera-grigia");
         roundButton.getStyle().set("height","35px");
         roundButton.getStyle().set("width","35px");
@@ -27,8 +27,7 @@ public class StatoListaCorsiComponent extends HorizontalLayout {
         // Creazione del pulsante con icona e testo
         Button addButton = new Button("Aggiungi a sessione", plusIcon);
         addButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        addButton.getStyle().set("color", "white"); // Colore del testo bianco
-        addButton.
+        addButton.getStyle().set("color", "white");
 
 
         setWidthFull(); // Imposta larghezza al 100%

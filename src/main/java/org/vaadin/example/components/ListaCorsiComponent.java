@@ -3,10 +3,7 @@ package org.vaadin.example.components;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.html.H3;
-import com.vaadin.flow.component.html.H4;
-import com.vaadin.flow.component.html.H5;
-import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.listbox.ListBox;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -87,7 +84,7 @@ public class ListaCorsiComponent extends BaseCardVertical {
 
         // Aggiunta dei componenti al layout
 
-        add(ol, listBoxContainer);
+        add(ol,new Hr(), listBoxContainer);
 
 
         ComponentUtil.addListener(UI.getCurrent(), TabComplessiChangeEvent.class, event->

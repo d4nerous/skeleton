@@ -35,6 +35,7 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
         this.store=store;
         this.listaRuoli=store.utente.getRoles();
         setPadding(false);
+        getStyle().set("background","#f9f9f9");
         if(store.ruoloSelected==null){
             openRoleSelectionDialog(navbarComponent);
         }

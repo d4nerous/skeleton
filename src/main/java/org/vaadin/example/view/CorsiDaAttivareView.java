@@ -50,7 +50,11 @@ public class CorsiDaAttivareView extends HorizontalLayout implements HasUrlParam
         wrapperTitle.add(title);
 
 
-        Grid<CorsiDTO> grid = new Grid<>(CorsiDTO.class);
+        Grid<CorsiDTO> grid = new Grid<>(CorsiDTO.class,false);
+        Grid.Column<CorsiDTO> nomeColumn = grid.addColumn(CorsiDTO::getCodiceSCU).setHeader("Scu");
+        Grid.Column<CorsiDTO> cognomeColumn = grid.addColumn(CorsiDTO::getCosto).setHeader("Costo");
+
+
         // Impostare gli elementi da visualizzare
         grid.setItems(fullList);
         setWidthFull();

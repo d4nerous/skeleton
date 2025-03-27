@@ -66,7 +66,9 @@ public class NavbarComponent extends BaseCardHorizontal {
         annoFormativoComboBox.setValue(listaAnni.get(0));
 
 
-        getStyle().set("background","royalblue").set("color","white");
+        getStyle().set("background","royalblue")
+                .set("color","white").
+                set("border-radius","0px 0px 10px 10px");
         setWidthFull();
         setPadding(true);
         setSpacing(true);
@@ -74,7 +76,7 @@ public class NavbarComponent extends BaseCardHorizontal {
         setDefaultVerticalComponentAlignment(Alignment.CENTER);
 
         // Titolo
-        Span title = new Span("Titolo Applicazione");
+        Span title = new Span("Ge.Co.");
         title.getStyle().set("font-size", "20px").set("font-weight", "bold");
         title.setWidth("300px");
         // Label con ID utente

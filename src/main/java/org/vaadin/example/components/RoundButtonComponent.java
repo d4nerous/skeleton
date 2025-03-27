@@ -47,6 +47,7 @@ public class RoundButtonComponent extends Div {
         button.getStyle().set("border","1px solid grey");
         button.getStyle().set("border-radius","20px");
         button.getStyle().set("box-shadow","2px 4px 5px 5px #5d222221");
+        button.getStyle().set("background","white");
         button.setPadding(true);
         button.setWidthFull();
         button.setMargin(true);
