@@ -5,6 +5,8 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.html.Footer;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.server.VaadinSession;
@@ -39,6 +41,22 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
         if(store.ruoloSelected==null){
             openRoleSelectionDialog(navbarComponent);
         }
+
+
+        Footer footer = new Footer();
+        Label f=new Label("© 2025 GeCo layout");
+        f.getStyle().set("color","white");
+        footer.add(f);
+        footer.getStyle().set("position", "fixed");
+        footer.getStyle().set("bottom", "0");
+        footer.getStyle().set("padding-top", "8px");
+        footer.getStyle().set("width", "100%");
+        footer.getStyle().set("background", "royalblue");
+        footer.getStyle().set("text-align", "center");
+        footer.getStyle().set("border-radius", "10px 10px 0px 0px");
+
+        add(footer);
+
     }
     private void openRoleSelectionDialog(NavbarComponent navbarComponent) {
 
@@ -51,7 +69,6 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
         ComboBox<RuoloDTO> ruoloComboBox = new ComboBox<>("Seleziona il tuo ruolo");
         ruoloComboBox.setItems(listaRuoli);
         ruoloComboBox.setItemLabelGenerator(RuoloDTO::getName);
-        ruoloComboBox.getElement().setAttribute("theme", "light");
 
         // Bottone per confermare la selezione
         Button confirmButton = new Button("Conferma", event -> {
@@ -70,8 +87,12 @@ public class MainLayout extends VerticalLayout implements RouterLayout {
             }
         });
 
-        // Aggiungere elementi al Dialog e mostrarlo
-        roleDialog.add(new VerticalLayout(ruoloComboBox, confirmButton));
+        VerticalLayout contentDialog=new VerticalLayout(ruoloComboBox, confirmButton);
+        roleDialog.setWidth("50%");
+        roleDialog.setHeight("50%");
+        contentDialog.setJustifyContentMode(JustifyContentMode.CENTER);
+        contentDialog.setAlignItems(Alignment.CENTER);
+        roleDialog.add(contentDialog);
         roleDialog.open();
     }
     @EventListener

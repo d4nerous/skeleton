@@ -2,13 +2,12 @@ package org.vaadin.example.components;
 
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.textfield.TextFieldVariant;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.spring.annotation.UIScope;
-import com.vaadin.flow.theme.Theme;
-import com.vaadin.flow.theme.lumo.Lumo;
+
 import org.springframework.stereotype.Component;
 import org.vaadin.example.Store;
 import org.vaadin.example.model.AnnoFormtivoDTO;
@@ -47,10 +46,6 @@ public class NavbarComponent extends BaseCardHorizontal {
 
     }
 
-
-
-
-
     private void buildUI(){
 
         ruoloComboBox.setItems(listaRuoli);
@@ -82,8 +77,10 @@ public class NavbarComponent extends BaseCardHorizontal {
         // Label con ID utente
         nome = new Span(utente.getName()+" "+utente.getSurname());
 
+        Icon iconNotification= VaadinIcon.BELL_O.create();
+        iconNotification.setColor("white");
         // Layout per allineare gli elementi a destra
-        HorizontalLayout rightLayout = new HorizontalLayout(annoFormativoComboBox, ruoloComboBox, nome);
+        HorizontalLayout rightLayout = new HorizontalLayout(annoFormativoComboBox, ruoloComboBox, nome,iconNotification);
         rightLayout.setWidthFull();
         rightLayout.setJustifyContentMode(JustifyContentMode.END);
         rightLayout.setAlignItems(Alignment.BASELINE);
