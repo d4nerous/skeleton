@@ -7,10 +7,14 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.vaadin.example.events.TabComplessiChangeEvent;
+import org.vaadin.example.model.AbilitazioniComplessiDTO;
+import org.vaadin.example.view.CorsiDaAttivareView;
 
 @Component
 @UIScope
@@ -23,6 +27,7 @@ public class RoundButtonComponent extends Div {
     private final Span roundButton = new Span();
     private final HorizontalLayout button= new HorizontalLayout(roundButton,new H5("CORSI DA ATTIVARE"));
     private final HorizontalLayout labelAbove = new HorizontalLayout(button,costi);
+    private AbilitazioniComplessiDTO abilitazioniComplessiDTO = new AbilitazioniComplessiDTO();
 
 
     public RoundButtonComponent() {
@@ -68,6 +73,7 @@ public class RoundButtonComponent extends Div {
                 removeSome();
                 this.costi=new VerticalLayout();
                 this.labelAbove.addComponentAtIndex(indexcosti,costi);
+                this.abilitazioniComplessiDTO = event.getSelectedValue();
                 this.costi.add(new Label("Importo stanziato: "+event.getSelectedValue().getImportoStanziato()));
                 this.costi.add(new Label("Costi sostenuti:    "+event.getSelectedValue().getCostiSostenuti()));
                 this.title.add(new H4(event.getSelectedValue().getNome()));
@@ -80,10 +86,7 @@ public class RoundButtonComponent extends Div {
 
         // Aggiungi il listener di click al bottone
         roundButton.addClickListener(e -> {
-            // Naviga alla vista "second-view"
-            getUI().ifPresent(ui -> ui.navigate("dettaglio-view"));
-            // Opzionale: mostra una notifica per il click
-            Notification.show("Hai cliccato il bottone e sei stato reindirizzato alla seconda vista!");
+            getUI().ifPresent(ui -> ui.navigate("corsiDaAttivare-view/" + abilitazioniComplessiDTO.getId()));
         });
 
 

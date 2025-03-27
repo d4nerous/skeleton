@@ -22,12 +22,12 @@ public class OperatoreView extends HorizontalLayout {
     private final RoundButtonComponent roundButtonComponent;
     private final ComplessiComponent complessiComponent;
 
-    public OperatoreView(EventService eventService) {
+    public OperatoreView() {
         this.leftStates = new LeftColumnBottonComponent();
         this.rightColumnComponent = new RightColumnComponent();
         this.mainLayout = new HorizontalLayout();
         this.roundButtonComponent = new RoundButtonComponent();
-        this.complessiComponent = new ComplessiComponent(eventService);
+        this.complessiComponent = new ComplessiComponent();
 
         buildUI();
     }

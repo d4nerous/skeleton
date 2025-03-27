@@ -37,6 +37,7 @@ public class ListaCorsiComponent extends BaseCardVertical {
     private VerticalLayout listBoxContainer = new VerticalLayout();
 
     private final HorizontalLayout nessunRisulatato=new HorizontalLayout(new H3("Non ci sono attività presenti"));
+
     public ListaCorsiComponent() {
         setSizeFull();
         setHeight("43vh");
@@ -45,6 +46,8 @@ public class ListaCorsiComponent extends BaseCardVertical {
         listBoxContainer.setWidthFull();
         listBoxContainer.getStyle().set("overflow","auto");
         nessunRisulatato.setWidthFull();
+        nessunRisulatato.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        nessunRisulatato.setAlignItems(FlexComponent.Alignment.CENTER);
 
         itemList.setRenderer(new ComponentRenderer<>(corso -> {
             HorizontalLayout row = new HorizontalLayout();
@@ -63,6 +66,8 @@ public class ListaCorsiComponent extends BaseCardVertical {
         itemList.setItems(fullList);
         itemList.setWidthFull();
         listBoxContainer.add(fullList.isEmpty()?nessunRisulatato:itemList);
+        nessunRisulatato.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        nessunRisulatato.setAlignItems(FlexComponent.Alignment.CENTER);
 
         HorizontalLayout ol= new HorizontalLayout();
         ol.setJustifyContentMode(JustifyContentMode.END);
@@ -106,7 +111,8 @@ public class ListaCorsiComponent extends BaseCardVertical {
             itemList.setItems(filteredList);
 
             listBoxContainer.add(filteredList.isEmpty()?nessunRisulatato:itemList);
-
+            nessunRisulatato.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+            nessunRisulatato.setAlignItems(FlexComponent.Alignment.CENTER);
         }
     }
 

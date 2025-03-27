@@ -9,9 +9,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LeftColumnSecondViewComponent extends VerticalLayout {
+public class LeftColumnDettaglioViewComponent extends VerticalLayout {
 
-    public LeftColumnSecondViewComponent() {
+    public LeftColumnDettaglioViewComponent() {
         setHeightFull();
         setWidth("20vw");
         setHeight("70vh");
@@ -46,8 +46,6 @@ public class LeftColumnSecondViewComponent extends VerticalLayout {
 
                     // Naviga alla vista "second-view"
                     getUI().ifPresent(ui -> ui.navigate("operatore-view"));
-                    // Opzionale: mostra una notifica per il click
-                    Notification.show("Hai cliccato il bottone e sei stato reindirizzato alla home!");
                     break;
                 case "Modifica":
                     // Azione per modificare

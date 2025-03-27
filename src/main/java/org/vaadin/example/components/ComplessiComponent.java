@@ -12,21 +12,18 @@ import org.vaadin.example.Store;
 import org.vaadin.example.events.TabComplessiChangeEvent;
 import org.vaadin.example.model.AbilitazioniComplessiDTO;
 import org.vaadin.example.model.UtenteDTO;
-import org.vaadin.example.service.EventService;
 
 import java.util.ArrayList;
 
 @Component
 @UIScope
 public class ComplessiComponent extends HorizontalLayout {
-    private final EventService eventService;
     private ArrayList<AbilitazioniComplessiDTO> complessi = null;
     private UtenteDTO utente=null;
     private final Tabs tabs = new Tabs();
 
 
-    public ComplessiComponent(EventService eventService) {
-        this.eventService = eventService;
+    public ComplessiComponent() {
         Store store = VaadinSession.getCurrent().getAttribute(Store.class);
         this.utente= store.utente;
         this.complessi = utente.getComplessi();
@@ -49,7 +46,6 @@ public class ComplessiComponent extends HorizontalLayout {
     private void addChangeListener() {
 
         tabs.addSelectedChangeListener(tab -> {
-
             fireChangeTab(tab.getSelectedTab());
         });
 
