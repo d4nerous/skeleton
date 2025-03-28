@@ -26,6 +26,7 @@ import java.util.List;
 @UIScope
 @CssImport("./styles/roundButtonsStyles.css")
 @CssImport("./styles/global-Styles.css")
+@CssImport("./styles/annullaCorsoStyles.css")
 public class MainLayout extends VerticalLayout implements RouterLayout {
     private final EventService eventService;
     List<RuoloDTO> listaRuoli;

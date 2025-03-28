@@ -81,7 +81,6 @@ public class CorsiDaAttivareView extends HorizontalLayout implements HasUrlParam
 
     @Override
     public void setParameter(BeforeEvent beforeEvent, Long id) {
-        removeAll();
 
         fullList = getMockData(id);
         title = new H3(this.listaAbilitazioneComplessi.stream().filter(el ->

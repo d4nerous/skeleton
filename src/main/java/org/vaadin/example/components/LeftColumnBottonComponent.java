@@ -1,12 +1,15 @@
 package org.vaadin.example.components;
 
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LeftColumnBottonComponent extends BaseCardVertical {
+public class LeftColumnBottonComponent extends VerticalLayout {
 
     public LeftColumnBottonComponent() {
         // Impostazioni layout principale
@@ -16,64 +19,29 @@ public class LeftColumnBottonComponent extends BaseCardVertical {
         setAlignItems(Alignment.CENTER); // Centra gli elementi
 
         // Aggiungi i pulsanti con il testo sopra
-        add(createRoundButtonWithLabel("Corsi Attivati", "sfera-verde", "green"));
-        add(createRoundButtonWithLabel("Corsi Chiusi", "sfera-rossa", "red"));
-        add(createRoundButtonWithLabel("Corsi Annullati", "sfera-blue", "blue"));
-        add(createSquareButtonWithLabel("Extra PAF", "rettangolo-yellow", "yellow"));
-        add(createRoundButtonWithLabel("Annulla Corso", "sfera-azure", "cyan"));
+        add(createSquareButtonWithLabel("CORSI ATTIVATI","button-green"));
+        add(createSquareButtonWithLabel("CORSI CHIUSI","button-rosso"));
+        add(createSquareButtonWithLabel("CORSI ANNULLATI","button-blue"));
+        add(createSquareButtonWithLabel("EXTRA PAF","button-yellow"));
+        add(createSquareButtonWithLabel("ANNULLA CORSO","button-cyan"));
+
 
     }
 
-    // Metodo per creare un pulsante tondo con etichetta sopra
-    private HorizontalLayout createRoundButtonWithLabel(String labelText, String style, String color) {
-
-        HorizontalLayout vl = new HorizontalLayout();
-        vl.getStyle().set("border", "1px solid " + color);
-        vl.getStyle().set("border-radius", "20px");
-        vl.getStyle().set("box-shadow", "2px 4px 5px 5px #5d222221");
-        vl.getStyle().set("cursor", "pointer");
-        vl.setAlignItems(Alignment.CENTER);
-        vl.setJustifyContentMode(JustifyContentMode.START);
-        vl.setPadding(true);
-        vl.setWidthFull();
-        vl.setMargin(true);
-
-        Span button = new Span();
-        button.addClassName(style);
-        // Aggiungi listener di click per ogni pulsante
-        vl.addClickListener(event -> {
-            handleButtonClick(labelText); // Gestisce l'evento per ogni pulsante
-        });
-
-        vl.add(button);
-        vl.add(new Label(labelText));
-        return vl;
-    }
 
     // Metodo per creare un pulsante quadrato con etichetta sopra
-    private HorizontalLayout createSquareButtonWithLabel(String labelText, String style, String color) {
-        // Pulsante quadrato
-        HorizontalLayout vl = new HorizontalLayout();
-        vl.getStyle().set("border", "1px solid " + color);
-        vl.getStyle().set("border-radius", "20px");
-        vl.getStyle().set("box-shadow", "2px 4px 5px 5px #5d222221");
-        vl.setAlignItems(Alignment.CENTER);
-        vl.setJustifyContentMode(JustifyContentMode.START);
-        vl.setWidthFull();
-        vl.setMargin(true);
-        vl.setPadding(true);
-        Span button = new Span();
+    private Button createSquareButtonWithLabel(String labelText,String style) {
+
+        Button button = new Button(labelText);
+        button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         button.addClassName(style);
 
-        vl.add(button);
-        vl.add(new Label(labelText));
         // Aggiungi listener di click per ogni pulsante
         button.addClickListener(event -> {
             handleButtonClick(labelText); // Gestisce l'evento per ogni pulsante
         });
 
-        // Layout verticale per etichetta + pulsante
-        return vl;
+        return button;
     }
 
     // Gestione evento del click per ciascun pulsante

@@ -9,7 +9,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LeftColumnCorsiViewComponent extends BaseCardVertical {
+public class LeftColumnCorsiViewComponent extends VerticalLayout {
 
     public LeftColumnCorsiViewComponent() {
         setHeightFull();

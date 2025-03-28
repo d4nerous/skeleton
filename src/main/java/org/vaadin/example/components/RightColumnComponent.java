@@ -1,10 +1,11 @@
 package org.vaadin.example.components;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RightColumnComponent extends BaseCardVertical {
+public class RightColumnComponent extends VerticalLayout {
 
     public RightColumnComponent() {
         // Impostazioni layout principale

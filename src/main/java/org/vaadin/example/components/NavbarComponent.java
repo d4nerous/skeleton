@@ -19,7 +19,7 @@ import java.util.Comparator;
 
 @Component
 @UIScope
-public class NavbarComponent extends BaseCardHorizontal {
+public class NavbarComponent extends HorizontalLayout {
 
     private ComboBox<AnnoFormtivoDTO> annoFormativoComboBox = new ComboBox<>("Anno");
     private ComboBox<RuoloDTO> ruoloComboBox = new ComboBox<>("Ruolo");

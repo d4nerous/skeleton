@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 
 @Component
 @UIScope
-public class ListaCorsiComponent extends BaseCardVertical {
+public class ListaCorsiComponent extends VerticalLayout {
 
     private final ListBox<CorsoDTO> itemList = new ListBox<>();
     private final DatePicker datePicker = new DatePicker("Seleziona una data");

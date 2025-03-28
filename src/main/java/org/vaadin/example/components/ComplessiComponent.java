@@ -39,7 +39,7 @@ public class ComplessiComponent extends HorizontalLayout {
 
     private void loadTabs() {
         for (AbilitazioniComplessiDTO complesso : complessi) {
-            Tab tab = new Tab(complesso.getCodice());
+            BaseTabComponent tab = new BaseTabComponent(complesso.getCodice());
             tabs.add(tab);
         }
     }
